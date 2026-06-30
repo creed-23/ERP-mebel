@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { DashboardLayout } from './layout/dashboard-layout/dashboard-layout';
-import { Breadcrumb } from 'primeng/breadcrumb';
 import { FEATURES } from './features/features.routing';
 import { AuthLayout } from './layout/auth-layout/auth-layout';
 import { PathResources } from './shared/resources/path_resource';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -14,6 +14,7 @@ export const routes: Routes = [
   {
     path: '',
     component: DashboardLayout,
+    canActivate: [authGuard],
     children: [
       {
         path: PathResources.EMPTY,

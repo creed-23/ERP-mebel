@@ -25,7 +25,10 @@
     "TOTAL": "Jami",
     "PAGE": "Sahifa",
     "OF": "dan",
-    "ROWS_PER_PAGE": "Qatorsatr soni"
+    "ROWS_PER_PAGE": "Qatorsatr soni",
+    "VIEW": "Ko'rish",
+    "PRINT": "Chop etish",
+    "DOWNLOAD": "Yuklab olish"
   },
 
   "AUTH": {
@@ -43,11 +46,17 @@
     "RESEND_CODE": "Qayta yuborish",
     "RESEND_IN": "Qayta yuborish: {{sec}} s",
     "WELCOME": "Xush kelibsiz!",
-    "ENTER_PHONE": "Davom etish uchun telefon raqamingizni kiriting"
+    "ENTER_PHONE": "Davom etish uchun telefon raqamingizni kiriting",
+    "TAGLINE": "Mebel fabrikasi boshqaruv tizimi",
+    "REMEMBER": "Eslab qolish",
+    "FORGOT": "Parolni unutdim?",
+    "SIGN_IN": "Tizimga kirish",
+    "FOOTER": "© 2024 {{app}}. Barcha huquqlar himoyalangan."
   },
 
   "NAV": {
     "DASHBOARD": "Bosh sahifa",
+    "HOME": "Bosh sahifa",
     "MASTERS": "Ustalar",
     "TABLES": "Stollar",
     "SESSIONS": "Seanslar",
@@ -57,22 +66,213 @@
     "SETTINGS": "Sozlamalar",
     "USERS": "Foydalanuvchilar",
     "MASTER": "Usta",
-    "MEBEL_SIZE": "Mebel O'lcham"
+    "MEBEL_SIZE": "Mebel O'lcham",
+    "WORKSHOPS": "Sexlar",
+    "WORKERS": "Ustalar",
+    "ORDERS": "Zakazlarim",
+    "ATTENDANCE": "Davomiylik",
+    "DIMENSIONS": "Razmerlar",
+    "SALARY": "Oylik hisob",
+    "DEBTORS": "Qarzdorlar"
   },
 
-  "TABLE": {
-    "TITLE": "Stollar",
-    "ADD": "Stol qo'shish",
+  "ROLE": {
+    "owner": "Loyiha egasi",
+    "workshop": "Sex egasi",
+    "worker": "Usta"
+  },
+
+  "STATUS": {
+    "done": "Bajarildi",
+    "inProgress": "Jarayonda",
+    "pending": "Kutilmoqda",
+    "cancelled": "Bekor",
+    "new": "Yangi",
+    "checking": "Tekshiruvda",
+    "danger": "Muddati o'tgan",
+    "warning": "Yaqinlashmoqda",
+    "active": "Faol"
+  },
+
+  "KANBAN": {
+    "new": "Yangi",
+    "inProgress": "Jarayonda",
+    "checking": "Tekshiruvda",
+    "done": "Bajarildi"
+  },
+
+  "FURNITURE": {
+    "all": "Barchasi",
+    "divan": "Divan",
+    "armchair": "Kreslo",
+    "tableChair": "Stol-stul",
+    "bed": "Yotoq",
+    "office": "Ofis"
+  },
+
+  "LABELS": {
+    "WORKSHOPS": "Sexlar",
+    "WORKERS": "Ustalar",
+    "ORDERS": "Zakaz",
+    "DEBTORS": "Qarzdorlar",
+    "REVENUE": "Tushum",
+    "ACTION": "Amal",
+    "SALARY": "Oylik",
+    "ADVANCE": "Avans",
+    "REMAINDER": "Qoldiq",
+    "DAYS": "Kun",
+    "HOURS": "Soat",
+    "RATE": "Tarif",
+    "NAME": "Usta",
+    "CLIENT": "Mijoz",
+    "DEADLINE": "Deadline",
+    "STATUS": "Status",
+    "PHONE": "Telefon",
+    "AMOUNT": "Summa",
+    "NOTE": "Izoh",
+    "CATEGORY": "Kategoriya",
+    "LENGTH": "Uzunlik",
+    "WIDTH": "Kengligi",
+    "HEIGHT": "Balandligi",
+    "PAID": "To'langan",
+    "PARTIAL": "Qisman",
+    "UNPAID": "To'lanmagan",
+    "NEW_ORDER": "Yangi zakaz",
+    "ORDER_NAME": "Zakaz nomi",
+    "CLIENT_NAME": "Mijoz ismi",
+    "MASTER": "Usta",
+    "FURNITURE_TYPE": "Mebel turi",
+    "DIMENSIONS": "Razmerlar",
+    "FILES": "Fayllar",
+    "PRICE": "Narxi (UZS)",
+    "SMS": "SMS yuborish",
+    "MARK_PAID": "To'landi",
+    "EXPORT": "Export Excel",
+    "PRINT": "Chop etish",
+    "ADD_AVANS": "Avans qo'shish",
+    "ALL": "Barchasi",
+    "OVERDUE": "Muddati o'tgan",
+    "THIS_WEEK": "Bu hafta",
+    "CAME": "Keldi",
+    "NOT_CAME": "Kelmadi",
+    "STARTED": "Ish boshlandi",
+    "ADD_DIMENSION": "O'lcham qo'shish",
+    "SEND": "Yuborish",
+    "RECEIVE_COPY": "Men ham olishim",
+    "DRAFT_NOTE": "Eskiz SMS orqali yuboriladi",
+    "DATE": "Sana",
+    "ACTIVE_ORDERS": "aktiv zakaz",
+    "WORK_HOURS": "soat",
+    "MONTH_EARNING": "Oylik daromad",
+    "WORK_ON_IT": "Ishlayman",
+    "DONE_SHORT": "Bajarildi"
+  },
+
+  "OWNER": {
+    "REVENUE_DYNAMICS": "Tushum dinamikasi",
+    "LAST_6_MONTHS": "So'nggi 6 oy · mln UZS",
+    "RECEIVED": "Tushgan",
+    "COMPLETED": "Bajarilgan",
+    "ORDERS_BY_WORKSHOP": "Sex bo'yicha zakazlar",
+    "TOTAL_COUNT": "{{count}} ta jami",
+    "PCS": "ta",
+    "ALL_WORKSHOPS": "Barcha sexlar",
+    "WEEKLY_STATUS": "Haftalik zakaz holati",
+    "MON_SAT": "Du–Sha",
+    "UZS_DEBT": "UZS qarzdorlik",
+    "DEBT_COUNT": "{{count}} ta"
+  },
+
+  "WORKER": {
+    "TODAY": "bugun",
+    "MONTH_EARNING": "UZS · Oylik daromad",
+    "TODAY_LOG": "Bugungi log",
+    "CHECK_IN": "Kirish",
+    "CHECK_OUT": "Chiqish",
+    "WORK_TIME": "Ish vaqti",
+    "HOURS_SUFFIX": "soat",
+    "CAME_IN": "Kirdi",
+    "LUNCH": "Tushlik",
+    "RETURNED": "Qaytdi"
+  },
+
+  "SALARY": {
+    "TITLE": "Oylik hisob",
+    "TOTAL_SALARY": "UZS · Jami oylik",
+    "TOTAL_ADVANCE": "UZS · Avans",
+    "TOTAL_REMAINDER": "UZS · Qoldiq",
+    "ALL_WORKSHOPS": "Barcha sexlar"
+  },
+
+  "DEBTORS": {
+    "TITLE": "Qarzdorlar",
+    "TAB_ALL": "Barchasi",
+    "TAB_OVERDUE": "Muddati o'tgan",
+    "TAB_WEEK": "Bu hafta",
+    "TAB_PAID": "To'langan",
+    "DEADLINE": "Muddat: {{date}}",
+    "PASSED": "(o'tib ketdi)"
+  },
+
+  "DIMENSIONS": {
+    "TITLE": "Mebel Razmerlar",
+    "PRODUCT_IMAGE": "Mahsulot rasmi",
+    "PRODUCT_INFO": "Mahsulot ma'lumoti",
     "NAME": "Nomi",
-    "STATUS": "Holati",
-    "HOURLY_RATE": "Soatlik narx",
-    "AVAILABLE": "Bo'sh",
-    "BUSY": "Band",
-    "RESERVED": "Bron qilingan",
-    "START_SESSION": "Seans boshlash",
-    "END_SESSION": "Seans tugatish",
-    "DURATION": "Davomiyligi",
-    "AMOUNT": "Summa"
+    "CATEGORY": "Kategoriya",
+    "NOTE": "Izoh",
+    "FILES": "Fayllar",
+    "ADD_FILE": "Fayl qo'shish",
+    "UPLOAD_IMAGE": "Rasm yuklang",
+    "IMAGE_HINT": "JPG, PNG, WEBP · max 10 MB",
+    "DROP_HINT": "yoki bu yerga tashlang",
+    "REPLACE": "Almashtirish",
+    "UPLOAD_PDF": "PDF yoki DWG fayl yuklang",
+    "TOTAL_PARTS": "Jami bo'laklar",
+    "PARTS": "ta bo'lak",
+    "LARGEST": "Eng katta o'lcham",
+    "AVG_LENGTH": "O'rtacha uzunlik",
+    "TABLE_TITLE": "O'lchamlar jadvali",
+    "TABLE_SUB": "{{rows}} ta qator · {{parts}} ta bo'lak",
+    "N": "N",
+    "LENGTH": "Uzunlik",
+    "WIDTH": "Kengligi",
+    "HEIGHT": "Balandligi",
+    "AMOUNT": "Miqdor",
+    "TOTAL_ROWS": "Jami qatorlar",
+    "TOTAL_PARTS_INLINE": "Jami bo'laklar",
+    "DOWNLOAD_PDF": "PDF yuklab olish",
+    "EMPTY": "Hali o'lchamlar qo'shilmagan",
+    "DELETE_ROW": "Qatorni o'chirish",
+    "DELETE_CONFIRM": "{{n}}‑qatorni o'chirishni xohlaysizmi? Bu amalni bekor qilib bo'lmaydi."
+  },
+
+  "ORDER": {
+    "TITLE": "Yangi zakaz",
+    "ORDER_NAME": "Zakaz nomi",
+    "CLIENT_NAME": "Mijoz ismi",
+    "MASTER": "Usta",
+    "DEADLINE": "Deadline",
+    "FURNITURE_TYPE": "Mebel turi",
+    "DIMENSIONS": "Razmerlar",
+    "NOTE": "Izoh",
+    "NOTE_PLACEHOLDER": "Zakaz bo'yicha qo'shimcha ma'lumot...",
+    "FILES": "Fayllar",
+    "PRICE": "Narxi (UZS)",
+    "PAYMENT_STATUS": "To'lov holati",
+    "DROP_FILES": "Fayllarni bu yerga tashlang yoki",
+    "CHOOSE": "tanlang",
+    "FILE_HINT": "PDF, JPG, PNG — max 10MB"
+  },
+
+  "SMS": {
+    "TITLE": "SMS yuborish",
+    "TEXT": "SMS matni",
+    "TEMPLATE": "Hurmatli {{name}},\nSiz {{amount}} UZS miqdorida qarzdorsiz. Iltimos, muddatida to'lang."
+  },
+
+  "AVANS": {
+    "TITLE": "Avans qo'shish"
   },
 
   "COLUMNS": {
@@ -80,16 +280,6 @@
     "POSITION": "Ish turi",
     "EMAIL": "Email",
     "SALARY": "Maosh"
-  },
-
-  "PRODUCT": {
-    "TITLE": "Mahsulotlar",
-    "ADD": "Mahsulot qo'shish",
-    "NAME": "Nomi",
-    "PRICE": "Narxi",
-    "CATEGORY": "Kategoriya",
-    "QUANTITY": "Miqdor",
-    "UNIT": "O'lchov birligi"
   },
 
   "MESSAGES": {
@@ -102,7 +292,9 @@
     "NO_DATA": "Ma'lumot topilmadi",
     "REQUIRED": "Bu maydon to'ldirilishi shart",
     "MIN_LENGTH": "Kamida {{min}} ta belgi kiriting",
-    "INVALID_PHONE": "Telefon raqam noto'g'ri"
+    "INVALID_PHONE": "Telefon raqam noto'g'ri",
+    "SMS_SENT": "SMS yuborildi",
+    "LOGIN_SUCCESS": "Tizimga muvaffaqiyatli kirdingiz"
   },
 
   "SETTINGS": {

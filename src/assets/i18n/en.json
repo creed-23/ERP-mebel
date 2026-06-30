@@ -25,12 +25,15 @@
     "TOTAL": "Total",
     "PAGE": "Page",
     "OF": "of",
-    "ROWS_PER_PAGE": "Rows per page"
+    "ROWS_PER_PAGE": "Rows per page",
+    "VIEW": "View",
+    "PRINT": "Print",
+    "DOWNLOAD": "Download"
   },
 
   "AUTH": {
-    "LOGIN": "Sign In",
-    "LOGOUT": "Sign Out",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
     "PHONE": "Phone number",
     "EMAIL": "Email",
     "PASSWORD": "Password",
@@ -40,15 +43,21 @@
     "OTP_SENT": "Code sent",
     "OTP_PLACEHOLDER": "• • • • • •",
     "SEND_CODE": "Send code",
-    "RESEND_CODE": "Resend code",
-    "RESEND_IN": "Resend in {{sec}}s",
+    "RESEND_CODE": "Resend",
+    "RESEND_IN": "Resend in: {{sec}} s",
     "WELCOME": "Welcome!",
-    "ENTER_PHONE": "Enter your phone number to continue"
+    "ENTER_PHONE": "Enter your phone number to continue",
+    "TAGLINE": "Furniture factory management system",
+    "REMEMBER": "Remember me",
+    "FORGOT": "Forgot password?",
+    "SIGN_IN": "Sign In",
+    "FOOTER": "© 2024 {{app}}. All rights reserved."
   },
 
   "NAV": {
     "DASHBOARD": "Dashboard",
-    "MASTERS": "Masters",
+    "HOME": "Dashboard",
+    "MASTERS": "Workers",
     "TABLES": "Tables",
     "SESSIONS": "Sessions",
     "PRODUCTS": "Products",
@@ -56,51 +65,236 @@
     "REPORTS": "Reports",
     "SETTINGS": "Settings",
     "USERS": "Users",
-    "MASTER": "Master",
-    "MEBEL_SIZE":"Mebel Size"
+    "MASTER": "Worker",
+    "MEBEL_SIZE": "Furniture Size",
+    "WORKSHOPS": "Workshops",
+    "WORKERS": "Workers",
+    "ORDERS": "My Orders",
+    "ATTENDANCE": "Attendance",
+    "DIMENSIONS": "Dimensions",
+    "SALARY": "Salary",
+    "DEBTORS": "Debtors"
   },
 
-  "TABLE": {
-    "TITLE": "Tables",
-    "ADD": "Add table",
-    "NAME": "Name",
-    "STATUS": "Status",
-    "HOURLY_RATE": "Hourly rate",
-    "AVAILABLE": "Available",
-    "BUSY": "Busy",
-    "RESERVED": "Reserved",
-    "START_SESSION": "Start session",
-    "END_SESSION": "End session",
-    "DURATION": "Duration",
-    "AMOUNT": "Amount"
+  "ROLE": {
+    "owner": "Project Owner",
+    "workshop": "Workshop Head",
+    "worker": "Worker"
   },
+
+  "STATUS": {
+    "done": "Completed",
+    "inProgress": "In Progress",
+    "pending": "Pending",
+    "cancelled": "Cancelled",
+    "new": "New",
+    "checking": "Checking",
+    "danger": "Overdue",
+    "warning": "Due soon",
+    "active": "Active"
+  },
+
+  "KANBAN": {
+    "new": "New",
+    "inProgress": "In Progress",
+    "checking": "Checking",
+    "done": "Completed"
+  },
+
+  "FURNITURE": {
+    "all": "All",
+    "divan": "Sofa",
+    "armchair": "Armchair",
+    "tableChair": "Table & Chair",
+    "bed": "Bed",
+    "office": "Office"
+  },
+
+  "LABELS": {
+    "WORKSHOPS": "Workshops",
+    "WORKERS": "Workers",
+    "ORDERS": "Order",
+    "DEBTORS": "Debtors",
+    "REVENUE": "Revenue",
+    "ACTION": "Action",
+    "SALARY": "Salary",
+    "ADVANCE": "Advance",
+    "REMAINDER": "Remainder",
+    "DAYS": "Days",
+    "HOURS": "Hours",
+    "RATE": "Rate",
+    "NAME": "Worker",
+    "CLIENT": "Client",
+    "DEADLINE": "Deadline",
+    "STATUS": "Status",
+    "PHONE": "Phone",
+    "AMOUNT": "Amount",
+    "NOTE": "Note",
+    "CATEGORY": "Category",
+    "LENGTH": "Length",
+    "WIDTH": "Width",
+    "HEIGHT": "Height",
+    "PAID": "Paid",
+    "PARTIAL": "Partial",
+    "UNPAID": "Unpaid",
+    "NEW_ORDER": "New Order",
+    "ORDER_NAME": "Order Name",
+    "CLIENT_NAME": "Client Name",
+    "MASTER": "Worker",
+    "FURNITURE_TYPE": "Furniture Type",
+    "DIMENSIONS": "Dimensions",
+    "FILES": "Files",
+    "PRICE": "Price (UZS)",
+    "SMS": "Send SMS",
+    "MARK_PAID": "Mark Paid",
+    "EXPORT": "Export Excel",
+    "PRINT": "Print",
+    "ADD_AVANS": "Add Advance",
+    "ALL": "All",
+    "OVERDUE": "Overdue",
+    "THIS_WEEK": "This Week",
+    "CAME": "Present",
+    "NOT_CAME": "Absent",
+    "STARTED": "Work started",
+    "ADD_DIMENSION": "Add Dimension",
+    "SEND": "Send",
+    "RECEIVE_COPY": "Send me a copy",
+    "DRAFT_NOTE": "Sent via SMS Draft",
+    "DATE": "Date",
+    "ACTIVE_ORDERS": "active orders",
+    "WORK_HOURS": "hours",
+    "MONTH_EARNING": "Monthly earning",
+    "WORK_ON_IT": "Work on it",
+    "DONE_SHORT": "Completed"
+  },
+
+  "OWNER": {
+    "REVENUE_DYNAMICS": "Revenue dynamics",
+    "LAST_6_MONTHS": "Last 6 months · mln UZS",
+    "RECEIVED": "Received",
+    "COMPLETED": "Completed",
+    "ORDERS_BY_WORKSHOP": "Orders by workshop",
+    "TOTAL_COUNT": "{{count}} total",
+    "PCS": "pcs",
+    "ALL_WORKSHOPS": "All workshops",
+    "WEEKLY_STATUS": "Weekly order status",
+    "MON_SAT": "Mon–Sat",
+    "UZS_DEBT": "UZS debt",
+    "DEBT_COUNT": "{{count}} items"
+  },
+
+  "WORKER": {
+    "TODAY": "today",
+    "MONTH_EARNING": "UZS · Monthly earning",
+    "TODAY_LOG": "Today's log",
+    "CHECK_IN": "Check in",
+    "CHECK_OUT": "Check out",
+    "WORK_TIME": "Work time",
+    "HOURS_SUFFIX": "hours",
+    "CAME_IN": "Checked in",
+    "LUNCH": "Lunch",
+    "RETURNED": "Returned"
+  },
+
+  "SALARY": {
+    "TITLE": "Salary report",
+    "TOTAL_SALARY": "UZS · Total salary",
+    "TOTAL_ADVANCE": "UZS · Advance",
+    "TOTAL_REMAINDER": "UZS · Remainder",
+    "ALL_WORKSHOPS": "All workshops"
+  },
+
+  "DEBTORS": {
+    "TITLE": "Debtors",
+    "TAB_ALL": "All",
+    "TAB_OVERDUE": "Overdue",
+    "TAB_WEEK": "This week",
+    "TAB_PAID": "Paid",
+    "DEADLINE": "Due: {{date}}",
+    "PASSED": "(overdue)"
+  },
+
+  "DIMENSIONS": {
+    "TITLE": "Furniture Dimensions",
+    "PRODUCT_IMAGE": "Product image",
+    "PRODUCT_INFO": "Product info",
+    "NAME": "Name",
+    "CATEGORY": "Category",
+    "NOTE": "Note",
+    "FILES": "Files",
+    "ADD_FILE": "Add file",
+    "UPLOAD_IMAGE": "Upload image",
+    "IMAGE_HINT": "JPG, PNG, WEBP · max 10 MB",
+    "DROP_HINT": "or drop it here",
+    "REPLACE": "Replace",
+    "UPLOAD_PDF": "Upload PDF or DWG file",
+    "TOTAL_PARTS": "Total parts",
+    "PARTS": "parts",
+    "LARGEST": "Largest size",
+    "AVG_LENGTH": "Average length",
+    "TABLE_TITLE": "Dimensions table",
+    "TABLE_SUB": "{{rows}} rows · {{parts}} parts",
+    "N": "N",
+    "LENGTH": "Length",
+    "WIDTH": "Width",
+    "HEIGHT": "Height",
+    "AMOUNT": "Amount",
+    "TOTAL_ROWS": "Total rows",
+    "TOTAL_PARTS_INLINE": "Total parts",
+    "DOWNLOAD_PDF": "Download PDF",
+    "EMPTY": "No dimensions added yet",
+    "DELETE_ROW": "Delete row",
+    "DELETE_CONFIRM": "Delete row {{n}}? This action cannot be undone."
+  },
+
+  "ORDER": {
+    "TITLE": "New Order",
+    "ORDER_NAME": "Order name",
+    "CLIENT_NAME": "Client name",
+    "MASTER": "Worker",
+    "DEADLINE": "Deadline",
+    "FURNITURE_TYPE": "Furniture type",
+    "DIMENSIONS": "Dimensions",
+    "NOTE": "Note",
+    "NOTE_PLACEHOLDER": "Additional information about the order...",
+    "FILES": "Files",
+    "PRICE": "Price (UZS)",
+    "PAYMENT_STATUS": "Payment status",
+    "DROP_FILES": "Drop files here or",
+    "CHOOSE": "choose",
+    "FILE_HINT": "PDF, JPG, PNG — max 10MB"
+  },
+
+  "SMS": {
+    "TITLE": "Send SMS",
+    "TEXT": "SMS text",
+    "TEMPLATE": "Dear {{name}},\nYou owe {{amount}} UZS. Please pay on time."
+  },
+
+  "AVANS": {
+    "TITLE": "Add Advance"
+  },
+
   "COLUMNS": {
     "NAME": "Name",
     "POSITION": "Position",
     "EMAIL": "Email",
     "SALARY": "Salary"
   },
-  "PRODUCT": {
-    "TITLE": "Products",
-    "ADD": "Add product",
-    "NAME": "Name",
-    "PRICE": "Price",
-    "CATEGORY": "Category",
-    "QUANTITY": "Quantity",
-    "UNIT": "Unit"
-  },
 
   "MESSAGES": {
-    "SUCCESS_SAVE": "Saved successfully",
-    "SUCCESS_DELETE": "Deleted successfully",
-    "SUCCESS_UPDATE": "Updated successfully",
+    "SUCCESS_SAVE": "Successfully saved",
+    "SUCCESS_DELETE": "Successfully deleted",
+    "SUCCESS_UPDATE": "Successfully updated",
     "CONFIRM_DELETE": "Are you sure you want to delete?",
-    "ERROR_GENERIC": "Something went wrong",
+    "ERROR_GENERIC": "An error occurred",
     "ERROR_NETWORK": "Network error. Please try again",
     "NO_DATA": "No data found",
     "REQUIRED": "This field is required",
     "MIN_LENGTH": "Enter at least {{min}} characters",
-    "INVALID_PHONE": "Invalid phone number"
+    "INVALID_PHONE": "Invalid phone number",
+    "SMS_SENT": "SMS sent",
+    "LOGIN_SUCCESS": "You have successfully logged in"
   },
 
   "SETTINGS": {

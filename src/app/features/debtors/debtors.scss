@@ -1,0 +1,62 @@
+.dcard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: 0.15s;
+  &:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  &__person {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+  &__phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    i { font-size: 13px; }
+  }
+  &__amount {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-danger);
+  }
+  &__deadline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    i { font-size: 12px; }
+    &.is-overdue { color: var(--color-danger); }
+  }
+  &__passed { font-weight: 700; }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}

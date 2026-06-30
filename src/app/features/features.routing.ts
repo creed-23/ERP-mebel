@@ -39,4 +39,25 @@ export const FEATURES: Routes = [
       breadcrumb: 'NAV.MEBEL_SIZE',
     },
   },
+  {
+    path: PathResources.SALARY,
+    loadComponent: () => import('./salary/salary').then((c) => c.Salary),
+    data: { breadcrumb: 'NAV.SALARY' },
+  },
+  {
+    path: PathResources.DEBTORS,
+    loadComponent: () => import('./debtors/debtors').then((c) => c.Debtors),
+    data: { breadcrumb: 'NAV.DEBTORS' },
+  },
+  {
+    path: PathResources.DIMENSIONS,
+    loadComponent: () => import('./dimensions/dimensions').then((c) => c.Dimensions),
+    data: { breadcrumb: 'NAV.DIMENSIONS' },
+  },
+  {
+    path: PathResources.DIMENSION_ID,
+    loadComponent: () =>
+      import('./dimensions/pages/dimension-detail/dimension-detail').then((c) => c.DimensionDetail),
+    data: { breadcrumb: 'NAV.DIMENSIONS' },
+  },
 ];

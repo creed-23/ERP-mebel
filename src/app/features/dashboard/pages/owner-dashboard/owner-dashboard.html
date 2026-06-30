@@ -1,0 +1,104 @@
+<div class="page">
+  <!-- Stat cards -->
+  <div class="grid grid-4">
+    <app-stat-card icon="pi pi-building" iconColor="primary" value="12"
+      [label]="'LABELS.WORKSHOPS' | translate" trend="+2" [trendUp]="true" />
+    <app-stat-card icon="pi pi-users" iconColor="purple" value="87"
+      [label]="'LABELS.WORKERS' | translate" trend="+5" [trendUp]="true" />
+    <app-stat-card icon="pi pi-clipboard" iconColor="teal" value="324"
+      [label]="'LABELS.ORDERS' | translate" subValue="142,500,000 UZS" trend="+12%" [trendUp]="true" />
+    <app-stat-card icon="pi pi-exclamation-triangle" iconColor="danger" value="23"
+      [label]="'LABELS.DEBTORS' | translate" trend="+3" [trendUp]="false" />
+  </div>
+
+  <!-- Charts -->
+  <div class="grid grid-5">
+    <div class="panel panel--pad col-3">
+      <div class="chart-head">
+        <div>
+          <h3 class="panel-title">{{ 'OWNER.REVENUE_DYNAMICS' | translate }}</h3>
+          <p class="panel-sub">{{ 'OWNER.LAST_6_MONTHS' | translate }}</p>
+        </div>
+        <div class="legend">
+          <span><i class="dot dot--primary"></i>{{ 'OWNER.RECEIVED' | translate }}</span>
+          <span><i class="dot dot--success"></i>{{ 'OWNER.COMPLETED' | translate }}</span>
+        </div>
+      </div>
+      <app-line-chart [data]="revenue()" [receivedLabel]="t('OWNER.RECEIVED')"
+        [completedLabel]="t('OWNER.COMPLETED')" />
+    </div>
+
+    <div class="panel panel--pad col-2">
+      <h3 class="panel-title">{{ 'OWNER.ORDERS_BY_WORKSHOP' | translate }}</h3>
+      <p class="panel-sub">{{ 'OWNER.TOTAL_COUNT' | translate: { count: totalOrders } }}</p>
+      <app-donut-chart [data]="ordersByWorkshop()" [centerLabel]="t('OWNER.PCS')" />
+      <div class="legend-list">
+        @for (d of ordersByWorkshop(); track d.label; let i = $index) {
+          <div class="legend-list__row">
+            <span class="legend-list__name"><i class="dot" [class]="'dot--c' + i"></i>{{ d.label }}</span>
+            <span class="legend-list__val">{{ d.value }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Workshops table -->
+  <div class="panel">
+    <div class="panel-head">
+      <h3 class="panel-title">{{ 'OWNER.ALL_WORKSHOPS' | translate }}</h3>
+      <div class="head-actions">
+        <app-button variant="ghost" size="sm" icon="pi-filter" label="COMMON.FILTER" />
+        <app-button variant="ghost" size="sm" icon="pi-plus" label="LABELS.NEW_ORDER" (buttonClick)="addOrder.emit()" />
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="ftable">
+        <thead>
+          <tr>
+            <th>{{ 'LABELS.WORKSHOPS' | translate }}</th>
+            <th>{{ 'LABELS.WORKERS' | translate }}</th>
+            <th>{{ 'LABELS.ORDERS' | translate }}</th>
+            <th>{{ 'LABELS.REVENUE' | translate }}</th>
+            <th>{{ 'LABELS.STATUS' | translate }}</th>
+            <th>{{ 'LABELS.ACTION' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of workshops(); track row.id) {
+            <tr>
+              <td>
+                <div class="ws-name">
+                  <span class="ws-name__icon"><i class="pi pi-building"></i></span>
+                  <span class="td-strong">{{ row.name }}</span>
+                </div>
+              </td>
+              <td>{{ row.workers }}</td>
+              <td>{{ row.orders }}</td>
+              <td class="td-strong">{{ row.revenue }} UZS</td>
+              <td><app-status-badge [status]="row.status" [label]="t('STATUS.' + row.status)" /></td>
+              <td>
+                <div class="row-actions">
+                  <button class="icon-btn"><i class="pi pi-pencil"></i></button>
+                  <button class="icon-btn icon-btn--danger"><i class="pi pi-ellipsis-h"></i></button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pager">
+      <span class="panel-sub">1–5 / 12</span>
+      <div class="pager__pages">
+        <button class="pager__btn"><i class="pi pi-chevron-left"></i></button>
+        <button class="pager__btn pager__btn--active">1</button>
+        <button class="pager__btn">2</button>
+        <button class="pager__btn">3</button>
+        <button class="pager__btn"><i class="pi pi-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

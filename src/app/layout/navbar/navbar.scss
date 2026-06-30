@@ -53,6 +53,21 @@
     font-size: 1.1rem;
   }
 }
+
+.bell {
+  position: relative;
+
+  &__dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: var(--color-danger);
+    border: 2px solid var(--color-bg-surface);
+  }
+}
 :host ::ng-deep .p-breadcrumb {
   background: transparent;
   border: none;

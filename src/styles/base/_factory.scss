@@ -1,0 +1,228 @@
+// ============================================================
+// _factory.scss — Mebel admin paneli uchun umumiy bloklar
+// Figma dizaynidagi takrorlanuvchi naqshlar (panel, jadval,
+// pill, grid) shu yerda global klasslar sifatida.
+// ============================================================
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// ─── Sahifa konteyner ────────────────────────────────────────
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}
+
+.page-title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.page-header {
+  @include flex-between;
+  flex-wrap: wrap;
+  gap: $spacing-3;
+}
+
+// ─── Panel (card) ────────────────────────────────────────────
+.panel {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  overflow: hidden;
+}
+
+.panel--pad {
+  padding: $spacing-5;
+}
+
+.panel-head {
+  @include flex-between;
+  gap: $spacing-3;
+  padding: $spacing-4 $spacing-5;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.panel-title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.panel-sub {
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+}
+
+// ─── Grids ───────────────────────────────────────────────────
+.grid {
+  display: grid;
+  gap: $spacing-4;
+}
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-5 { grid-template-columns: repeat(5, 1fr); }
+
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+
+@include max-lg {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-5 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .col-2, .col-3 { grid-column: span 1; }
+}
+@include max-md {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+// ─── Factory table ───────────────────────────────────────────
+.ftable {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    text-align: left;
+    padding: $spacing-3 $spacing-5;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-surface);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: $spacing-3 $spacing-5;
+    font-size: $font-size-sm;
+    color: var(--color-text-secondary);
+    border-top: 1px solid var(--color-border);
+    vertical-align: middle;
+  }
+
+  tbody tr {
+    transition: background $transition-fast;
+    &:hover td {
+      background: color-mix(in srgb, var(--color-bg-surface) 60%, transparent);
+    }
+  }
+
+  .td-strong {
+    font-weight: $font-weight-medium;
+    color: var(--color-text-primary);
+  }
+}
+
+.table-scroll {
+  overflow-x: auto;
+  @include custom-scrollbar;
+}
+
+// ─── Filter pills ────────────────────────────────────────────
+.pills {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  flex-wrap: wrap;
+}
+
+.pill {
+  padding: $spacing-2 $spacing-4;
+  border-radius: $radius-full;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+    color: var(--color-text-primary);
+  }
+
+  &--active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+  }
+
+  &--sm {
+    padding: 6px $spacing-3;
+    border-radius: $radius-md;
+    font-size: $font-size-xs;
+  }
+}
+
+// ─── Segmented tabs ──────────────────────────────────────────
+.seg {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-1;
+  padding: $spacing-1;
+  background: var(--color-bg-surface);
+  border-radius: $radius-lg;
+}
+.seg__item {
+  padding: $spacing-2 $spacing-4;
+  border-radius: $radius-md;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &--active {
+    background: var(--color-bg-elevated);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+// ─── Icon button (kichik amal tugmasi) ───────────────────────
+.icon-btn {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $radius-md;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: $transition-fast;
+
+  &:hover {
+    background: var(--color-bg-subtle);
+    color: var(--color-text-primary);
+  }
+  &--danger:hover {
+    background: var(--color-danger-subtle);
+    color: var(--color-danger);
+  }
+  &--bordered {
+    border: 1px solid var(--color-border);
+  }
+}
+
+// ─── Field (label + input wrapper) ───────────────────────────
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: $spacing-3;
+  padding: $spacing-4 $spacing-6;
+  border-top: 1px solid var(--color-border);
+}
