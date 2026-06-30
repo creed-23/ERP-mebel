@@ -31,6 +31,10 @@
     "DOWNLOAD": "Yuklab olish"
   },
 
+  "TABLE": {
+    "EMPTY": "Ma'lumot topilmadi"
+  },
+
   "AUTH": {
     "LOGIN": "Kirish",
     "LOGOUT": "Chiqish",

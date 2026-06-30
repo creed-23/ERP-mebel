@@ -29,6 +29,12 @@
   color: var(--color-text-primary);
 }
 
+.gt-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-2;
+}
+
 .gt-actions-group {
   display: inline-flex;
   align-items: center;

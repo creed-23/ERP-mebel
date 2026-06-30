@@ -6,12 +6,23 @@ import { LineChart } from '@shared/components/charts/line-chart';
 import { DonutChart } from '@shared/components/charts/donut-chart';
 import { StatusBadge } from '@shared/components/status-badge/status-badge';
 import { Button } from '@shared/components/button/button';
+import { TableColumn, TableDefalt } from '@shared/components/tables/table-defalt/table-defalt';
+import { TableCellDirective } from '@shared/components/tables/table-defalt/table-cell.directive';
 import { RevenuePoint, SeriesPoint, WorkshopRow } from '@shared/interfaces/factory.interface';
 
 @Component({
   selector: 'app-owner-dashboard',
   standalone: true,
-  imports: [TranslatePipe, StatCard, LineChart, DonutChart, StatusBadge, Button],
+  imports: [
+    TranslatePipe,
+    StatCard,
+    LineChart,
+    DonutChart,
+    StatusBadge,
+    Button,
+    TableDefalt,
+    TableCellDirective,
+  ],
   templateUrl: './owner-dashboard.html',
   styleUrl: './owner-dashboard.scss',
 })
@@ -24,6 +35,14 @@ export class OwnerDashboard {
   revenue = signal<RevenuePoint[]>([]);
   ordersByWorkshop = signal<SeriesPoint[]>([]);
   workshops = signal<WorkshopRow[]>([]);
+
+  columns: TableColumn[] = [
+    { key: 'name', label: 'LABELS.WORKSHOPS' },
+    { key: 'workers', label: 'LABELS.WORKERS' },
+    { key: 'orders', label: 'LABELS.ORDERS' },
+    { key: 'revenue', label: 'LABELS.REVENUE' },
+    { key: 'status', label: 'LABELS.STATUS' },
+  ];
 
   totalOrders = 324;
 

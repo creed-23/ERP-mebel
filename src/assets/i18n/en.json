@@ -31,6 +31,10 @@
     "DOWNLOAD": "Download"
   },
 
+  "TABLE": {
+    "EMPTY": "No data found"
+  },
+
   "AUTH": {
     "LOGIN": "Login",
     "LOGOUT": "Logout",

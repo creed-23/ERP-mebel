@@ -13,7 +13,6 @@
       </div>
     </div>
     <div class="dd-actions">
-      <app-button variant="ghost" icon="pi-download" label="DIMENSIONS.DOWNLOAD_PDF" (buttonClick)="downloadPdf()" />
       <app-button variant="primary" icon="pi-check" label="COMMON.SAVE" />
     </div>
   </div>
@@ -115,102 +114,25 @@
         </div>
       </div>
 
-      <!-- Dimension table -->
-      <div class="panel">
-        <div class="panel-head">
-          <div>
-            <h3 class="panel-title">{{ 'DIMENSIONS.TABLE_TITLE' | translate }}</h3>
-            <p class="panel-sub">{{ 'DIMENSIONS.TABLE_SUB' | translate: { rows: rows().length, parts: total() } }}</p>
-          </div>
-          <app-button size="sm" icon="pi-plus" label="COMMON.ADD" (buttonClick)="addRow()" />
-        </div>
+      <!-- O'lchamlar jadvali (umumiy GenericTableComponent) -->
+      <app-generic-table
+        [title]="'DIMENSIONS.TABLE_TITLE' | translate"
+        [columns]="dimColumns"
+        [data]="rows()"
+        [idKey]="'id'"
+        [createEmptyRow]="createEmptyRow"
+        [pdfSubtitle]="pdfSub()"
+        (rowAdded)="onRowAdded($event)"
+        (rowUpdated)="onRowUpdated($event)"
+        (rowDeleted)="onRowDeleted($event)"
+      ></app-generic-table>
 
-        <div class="table-scroll">
-          <table class="ftable dd-table">
-            <thead>
-              <tr>
-                <th class="w-n">{{ 'DIMENSIONS.N' | translate }}</th>
-                <th class="ta-r">{{ 'DIMENSIONS.LENGTH' | translate }}</th>
-                <th class="ta-c">×</th>
-                <th class="ta-r">{{ 'DIMENSIONS.WIDTH' | translate }}</th>
-                <th class="ta-r">{{ 'DIMENSIONS.HEIGHT' | translate }}</th>
-                <th class="ta-r">{{ 'DIMENSIONS.AMOUNT' | translate }}</th>
-                <th class="ta-r">{{ 'COMMON.ACTIONS' | translate }}</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for (row of rows(); track row.id; let i = $index) {
-                <tr [class.is-editing]="editingId() === row.id">
-                  <td class="td-n">{{ i + 1 }}</td>
-                  @if (editingId() === row.id) {
-                    <td class="ta-r"><input class="cell-input" type="number" [(ngModel)]="editBuf.length" /></td>
-                    <td class="ta-c">×</td>
-                    <td class="ta-r"><input class="cell-input" type="number" [(ngModel)]="editBuf.width" /></td>
-                    <td class="ta-r"><input class="cell-input" type="number" [(ngModel)]="editBuf.height" /></td>
-                    <td class="ta-r">
-                      <input class="cell-input cell-input--sm" type="number" [(ngModel)]="editBuf.amount"
-                        (keydown.enter)="saveEdit()" (keydown.escape)="cancelEdit()" />
-                    </td>
-                    <td class="ta-r">
-                      <div class="dd-row-actions">
-                        <button class="dd-save" (click)="saveEdit()"><i class="pi pi-check"></i>{{ 'COMMON.SAVE' | translate }}</button>
-                        <button class="icon-btn" (click)="cancelEdit()"><i class="pi pi-times"></i></button>
-                      </div>
-                    </td>
-                  } @else {
-                    <td class="ta-r td-num">{{ row.length }}</td>
-                    <td class="ta-c td-x">×</td>
-                    <td class="ta-r td-num">{{ row.width }}</td>
-                    <td class="ta-r td-muted">{{ row.height || '—' }}</td>
-                    <td class="ta-r td-amount" [class.is-high]="row.amount >= 4">{{ row.amount }}</td>
-                    <td class="ta-r">
-                      <div class="dd-row-actions dd-row-actions--hover">
-                        <button class="icon-btn" (click)="startEdit(row)"><i class="pi pi-pencil"></i></button>
-                        <button class="icon-btn icon-btn--danger" (click)="deleteConfirm.set(row.id)"><i class="pi pi-trash"></i></button>
-                      </div>
-                    </td>
-                  }
-                </tr>
-              }
-              @if (rows().length === 0) {
-                <tr>
-                  <td colspan="7" class="dd-empty">
-                    <i class="pi pi-box"></i>
-                    <p>{{ 'DIMENSIONS.EMPTY' | translate }}</p>
-                    <app-button variant="ghost" size="sm" icon="pi-plus" label="COMMON.ADD" (buttonClick)="addRow()" />
-                  </td>
-                </tr>
-              }
-            </tbody>
-          </table>
-        </div>
-
-        <div class="dd-foot">
-          <div class="dd-foot__stats">
-            <span>{{ 'DIMENSIONS.TOTAL_ROWS' | translate }}: <strong>{{ rows().length }}</strong></span>
-            <span>{{ 'DIMENSIONS.TOTAL_PARTS_INLINE' | translate }}: <strong class="is-primary">{{ total() }} ta</strong></span>
-          </div>
-          <app-button variant="ghost" size="sm" icon="pi-download" label="DIMENSIONS.DOWNLOAD_PDF" (buttonClick)="downloadPdf()" />
+      <div class="dd-foot">
+        <div class="dd-foot__stats">
+          <span>{{ 'DIMENSIONS.TOTAL_ROWS' | translate }}: <strong>{{ rows().length }}</strong></span>
+          <span>{{ 'DIMENSIONS.TOTAL_PARTS_INLINE' | translate }}: <strong class="is-primary">{{ total() }} ta</strong></span>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- Delete confirm -->
-@if (deleteConfirm() !== null) {
-  <div class="dd-confirm">
-    <div class="dd-confirm__backdrop" (click)="deleteConfirm.set(null)"></div>
-    <div class="dd-confirm__box">
-      <div class="dd-confirm__icon"><i class="pi pi-trash"></i></div>
-      <div>
-        <h3 class="dd-confirm__title">{{ 'DIMENSIONS.DELETE_ROW' | translate }}</h3>
-        <p class="dd-confirm__text">{{ 'DIMENSIONS.DELETE_CONFIRM' | translate: { n: deleteConfirm() } }}</p>
-      </div>
-      <div class="dd-confirm__actions">
-        <app-button variant="outline-secondary" size="sm" [fullWidth]="true" label="COMMON.CANCEL" (buttonClick)="deleteConfirm.set(null)" />
-        <app-button variant="danger" size="sm" [fullWidth]="true" label="COMMON.DELETE" (buttonClick)="deleteRow(deleteConfirm()!)" />
-      </div>
-    </div>
-  </div>
-}

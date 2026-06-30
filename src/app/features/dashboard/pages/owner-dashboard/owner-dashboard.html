@@ -53,52 +53,28 @@
       </div>
     </div>
 
-    <div class="table-scroll">
-      <table class="ftable">
-        <thead>
-          <tr>
-            <th>{{ 'LABELS.WORKSHOPS' | translate }}</th>
-            <th>{{ 'LABELS.WORKERS' | translate }}</th>
-            <th>{{ 'LABELS.ORDERS' | translate }}</th>
-            <th>{{ 'LABELS.REVENUE' | translate }}</th>
-            <th>{{ 'LABELS.STATUS' | translate }}</th>
-            <th>{{ 'LABELS.ACTION' | translate }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (row of workshops(); track row.id) {
-            <tr>
-              <td>
-                <div class="ws-name">
-                  <span class="ws-name__icon"><i class="pi pi-building"></i></span>
-                  <span class="td-strong">{{ row.name }}</span>
-                </div>
-              </td>
-              <td>{{ row.workers }}</td>
-              <td>{{ row.orders }}</td>
-              <td class="td-strong">{{ row.revenue }} UZS</td>
-              <td><app-status-badge [status]="row.status" [label]="t('STATUS.' + row.status)" /></td>
-              <td>
-                <div class="row-actions">
-                  <button class="icon-btn"><i class="pi pi-pencil"></i></button>
-                  <button class="icon-btn icon-btn--danger"><i class="pi pi-ellipsis-h"></i></button>
-                </div>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+    <app-table [columns]="columns" [data]="workshops()" [pageSize]="5">
+      <ng-template appTableCell="name" let-row>
+        <div class="ws-name">
+          <span class="ws-name__icon"><i class="pi pi-building"></i></span>
+          <span class="td-strong">{{ row.name }}</span>
+        </div>
+      </ng-template>
 
-    <div class="pager">
-      <span class="panel-sub">1–5 / 12</span>
-      <div class="pager__pages">
-        <button class="pager__btn"><i class="pi pi-chevron-left"></i></button>
-        <button class="pager__btn pager__btn--active">1</button>
-        <button class="pager__btn">2</button>
-        <button class="pager__btn">3</button>
-        <button class="pager__btn"><i class="pi pi-chevron-right"></i></button>
-      </div>
-    </div>
+      <ng-template appTableCell="revenue" let-row>
+        <span class="td-strong">{{ row.revenue }} UZS</span>
+      </ng-template>
+
+      <ng-template appTableCell="status" let-row>
+        <app-status-badge [status]="row.status" [label]="t('STATUS.' + row.status)" />
+      </ng-template>
+
+      <ng-template appTableCell="actions">
+        <div class="row-actions">
+          <button class="icon-btn"><i class="pi pi-pencil"></i></button>
+          <button class="icon-btn icon-btn--danger"><i class="pi pi-ellipsis-h"></i></button>
+        </div>
+      </ng-template>
+    </app-table>
   </div>
 </div>

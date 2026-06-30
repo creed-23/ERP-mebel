@@ -32,46 +32,33 @@
 
   <!-- Table -->
   <div class="panel">
-    <div class="table-scroll">
-      <table class="ftable">
-        <thead>
-          <tr>
-            <th>{{ 'LABELS.NAME' | translate }}</th>
-            <th>{{ 'LABELS.DAYS' | translate }}</th>
-            <th>{{ 'LABELS.HOURS' | translate }}</th>
-            <th>{{ 'LABELS.RATE' | translate }}</th>
-            <th>{{ 'LABELS.SALARY' | translate }}</th>
-            <th>{{ 'LABELS.ADVANCE' | translate }}</th>
-            <th>{{ 'LABELS.REMAINDER' | translate }}</th>
-            <th>{{ 'LABELS.ACTION' | translate }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (row of rows(); track row.id) {
-            <tr>
-              <td>
-                <div class="sal-name">
-                  <app-avatar [initials]="ini(row.name)" [size]="28" />
-                  <span class="td-strong">{{ row.name }}</span>
-                </div>
-              </td>
-              <td>{{ row.days }}</td>
-              <td>{{ row.hours }}</td>
-              <td>{{ row.rate }}</td>
-              <td class="td-strong">{{ row.salary }}</td>
-              <td class="is-advance">{{ row.avans }}</td>
-              <td class="is-remainder">{{ row.qoldiq }}</td>
-              <td>
-                <div class="sal-row-actions">
-                  <app-button variant="ghost" size="xs" label="LABELS.ADD_AVANS" (buttonClick)="openAvans(row)" />
-                  <button class="icon-btn"><i class="pi pi-print"></i></button>
-                </div>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+    <app-table [columns]="columns" [data]="rows()" [pageSize]="8">
+      <ng-template appTableCell="name" let-row>
+        <div class="sal-name">
+          <app-avatar [initials]="ini(row.name)" [size]="28" />
+          <span class="td-strong">{{ row.name }}</span>
+        </div>
+      </ng-template>
+
+      <ng-template appTableCell="salary" let-row>
+        <span class="td-strong">{{ row.salary }}</span>
+      </ng-template>
+
+      <ng-template appTableCell="avans" let-row>
+        <span class="is-advance">{{ row.avans }}</span>
+      </ng-template>
+
+      <ng-template appTableCell="qoldiq" let-row>
+        <span class="is-remainder">{{ row.qoldiq }}</span>
+      </ng-template>
+
+      <ng-template appTableCell="actions" let-row>
+        <div class="sal-row-actions">
+          <app-button variant="ghost" size="xs" label="LABELS.ADD_AVANS" (buttonClick)="openAvans(row)" />
+          <button class="icon-btn"><i class="pi pi-print"></i></button>
+        </div>
+      </ng-template>
+    </app-table>
   </div>
 </div>
 

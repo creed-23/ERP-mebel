@@ -15,36 +15,31 @@
       <div class="panel-head">
         <h3 class="panel-title">{{ 'NAV.ORDERS' | translate }}</h3>
       </div>
-      <div class="table-scroll">
-        <table class="ftable">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>{{ 'LABELS.CLIENT' | translate }}</th>
-              <th>{{ 'LABELS.DEADLINE' | translate }}</th>
-              <th>{{ 'LABELS.STATUS' | translate }}</th>
-              <th>{{ 'LABELS.ACTION' | translate }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for (row of orders(); track row.id) {
-              <tr>
-                <td class="order-id">{{ row.id }}</td>
-                <td class="td-strong">{{ row.client }}</td>
-                <td><span class="deadline"><i class="pi pi-calendar"></i>{{ row.deadline }}</span></td>
-                <td><app-status-badge [status]="row.status" [label]="t('STATUS.' + row.status)" /></td>
-                <td>
-                  @if (row.status !== 'done' && row.status !== 'checking') {
-                    <app-button size="xs" variant="primary" label="LABELS.WORK_ON_IT" />
-                  } @else if (row.status === 'done') {
-                    <app-button size="xs" variant="success" icon="pi-check" label="LABELS.DONE_SHORT" />
-                  }
-                </td>
-              </tr>
-            }
-          </tbody>
-        </table>
-      </div>
+      <app-table [columns]="ordersColumns" [data]="orders()" [pageSize]="7">
+        <ng-template appTableCell="id" let-row>
+          <span class="order-id">{{ row.id }}</span>
+        </ng-template>
+
+        <ng-template appTableCell="client" let-row>
+          <span class="td-strong">{{ row.client }}</span>
+        </ng-template>
+
+        <ng-template appTableCell="deadline" let-row>
+          <span class="deadline"><i class="pi pi-calendar"></i>{{ row.deadline }}</span>
+        </ng-template>
+
+        <ng-template appTableCell="status" let-row>
+          <app-status-badge [status]="row.status" [label]="t('STATUS.' + row.status)" />
+        </ng-template>
+
+        <ng-template appTableCell="actions" let-row>
+          @if (row.status !== 'done' && row.status !== 'checking') {
+            <app-button size="xs" variant="primary" label="LABELS.WORK_ON_IT" />
+          } @else if (row.status === 'done') {
+            <app-button size="xs" variant="success" icon="pi-check" label="LABELS.DONE_SHORT" />
+          }
+        </ng-template>
+      </app-table>
     </div>
 
     <!-- Attendance card -->
