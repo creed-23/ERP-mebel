@@ -18,6 +18,15 @@
       ></i>
     </button>
 
-    <div class="user">JT</div>
+    <button class="theme-btn bell">
+      <i class="pi pi-bell"></i>
+      <span class="bell__dot"></span>
+    </button>
+
+    @if (auth.user(); as u) {
+      <app-avatar [initials]="u.initials" [size]="40" [online]="true" />
+    } @else {
+      <div class="user">?</div>
+    }
   </div>
 </header>

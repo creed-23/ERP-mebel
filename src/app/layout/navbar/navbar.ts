@@ -12,11 +12,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { LangSwitcherComponent } from '../../i18n/lang-switcher.component';
 import { ThemeService } from '@styles/themes/theme.service';
 import { SidebarService } from '../sidebar/sidebar.service';
+import { AuthService } from '@core/services/auth.service';
+import { Avatar } from '@shared/components/avatar/avatar';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [BreadcrumbModule, LangSwitcherComponent],
+  imports: [BreadcrumbModule, LangSwitcherComponent, Avatar],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })
@@ -24,6 +26,7 @@ export class Navbar implements OnInit, OnDestroy {
   private router = inject(Router);
   themeService = inject(ThemeService);
   sidebarService = inject(SidebarService);
+  auth = inject(AuthService);
   private activatedRoute = inject(ActivatedRoute);
 
   private translate = inject(TranslateService);

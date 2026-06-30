@@ -1,0 +1,79 @@
+<div class="page">
+  <!-- Header controls -->
+  <div class="page-header">
+    <div class="sal-controls">
+      <h2 class="page-title">{{ 'SALARY.TITLE' | translate }}</h2>
+      <div class="month-nav">
+        <button class="icon-btn"><i class="pi pi-chevron-left"></i></button>
+        <span class="month-nav__label">{{ month() }}</span>
+        <button class="icon-btn"><i class="pi pi-chevron-right"></i></button>
+      </div>
+      <select class="input sal-select">
+        <option>{{ 'SALARY.ALL_WORKSHOPS' | translate }}</option>
+        <option>Yotoq xona sexi</option>
+        <option>Oshxona sexi</option>
+      </select>
+    </div>
+    <div class="sal-actions">
+      <app-button variant="ghost" size="sm" icon="pi-print" label="LABELS.PRINT" />
+      <app-button variant="ghost" size="sm" icon="pi-download" label="LABELS.EXPORT" />
+    </div>
+  </div>
+
+  <!-- Stat cards -->
+  <div class="grid grid-3">
+    <app-stat-card icon="pi pi-dollar" iconColor="success" value="48,600,000"
+      [label]="'SALARY.TOTAL_SALARY' | translate" trend="+5%" [trendUp]="true" />
+    <app-stat-card icon="pi pi-arrow-up-right" iconColor="warning" value="8,200,000"
+      [label]="'SALARY.TOTAL_ADVANCE' | translate" />
+    <app-stat-card icon="pi pi-chart-line" iconColor="primary" value="40,400,000"
+      [label]="'SALARY.TOTAL_REMAINDER' | translate" trend="+3%" [trendUp]="true" />
+  </div>
+
+  <!-- Table -->
+  <div class="panel">
+    <div class="table-scroll">
+      <table class="ftable">
+        <thead>
+          <tr>
+            <th>{{ 'LABELS.NAME' | translate }}</th>
+            <th>{{ 'LABELS.DAYS' | translate }}</th>
+            <th>{{ 'LABELS.HOURS' | translate }}</th>
+            <th>{{ 'LABELS.RATE' | translate }}</th>
+            <th>{{ 'LABELS.SALARY' | translate }}</th>
+            <th>{{ 'LABELS.ADVANCE' | translate }}</th>
+            <th>{{ 'LABELS.REMAINDER' | translate }}</th>
+            <th>{{ 'LABELS.ACTION' | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of rows(); track row.id) {
+            <tr>
+              <td>
+                <div class="sal-name">
+                  <app-avatar [initials]="ini(row.name)" [size]="28" />
+                  <span class="td-strong">{{ row.name }}</span>
+                </div>
+              </td>
+              <td>{{ row.days }}</td>
+              <td>{{ row.hours }}</td>
+              <td>{{ row.rate }}</td>
+              <td class="td-strong">{{ row.salary }}</td>
+              <td class="is-advance">{{ row.avans }}</td>
+              <td class="is-remainder">{{ row.qoldiq }}</td>
+              <td>
+                <div class="sal-row-actions">
+                  <app-button variant="ghost" size="xs" label="LABELS.ADD_AVANS" (buttonClick)="openAvans(row)" />
+                  <button class="icon-btn"><i class="pi pi-print"></i></button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<app-avans-modal [open]="avansOpen()" [workerName]="selectedWorker()?.name ?? null"
+  (close)="avansOpen.set(false)" />

@@ -4,9 +4,12 @@
   [class.sidebar--open]="sidebarService.mobileOpen()"
 >
   <div class="sidebar-header">
-    @if (!sidebarService.collapsed()) {
-      <div class="logo">{{ AppName }}</div>
-    }
+    <div class="brand">
+      <span class="brand__logo"><i class="pi pi-th-large"></i></span>
+      @if (!sidebarService.collapsed()) {
+        <span class="brand__name">{{ AppName }}</span>
+      }
+    </div>
 
     <button class="toggle-btn" (click)="toggle()">
       <i class="pi pi-bars"></i>
@@ -14,14 +17,28 @@
   </div>
 
   <nav>
-    @for (item of menus; track item.route) {
+    @for (item of menus(); track item.route) {
       <a [routerLink]="item.route" routerLinkActive="active" (click)="closeMobile()">
         <i [class]="item.icon"></i>
-
         @if (!sidebarService.collapsed()) {
           <span>{{ item.label | translate }}</span>
         }
       </a>
     }
   </nav>
+
+  @if (user(); as u) {
+    <div class="sidebar-user">
+      <app-avatar [initials]="u.initials" [size]="36" [online]="true" />
+      @if (!sidebarService.collapsed()) {
+        <div class="sidebar-user__info">
+          <div class="sidebar-user__name">{{ u.name }}</div>
+          <div class="sidebar-user__role">{{ 'ROLE.' + u.role | translate }}</div>
+        </div>
+        <button class="sidebar-user__logout" (click)="logout()" title="Logout">
+          <i class="pi pi-sign-out"></i>
+        </button>
+      }
+    </div>
+  }
 </aside>

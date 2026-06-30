@@ -1,0 +1,49 @@
+<div class="page">
+  <h2 class="page-title">{{ 'DEBTORS.TITLE' | translate }}</h2>
+
+  <!-- Tabs -->
+  <div class="seg">
+    @for (tb of tabs; track tb.key) {
+      <button class="seg__item" [class.seg__item--active]="tab() === tb.key" (click)="tab.set(tb.key)">
+        {{ tb.label | translate }} ({{ count(tb.key) }})
+      </button>
+    }
+  </div>
+
+  <!-- Cards -->
+  <div class="grid grid-3">
+    @for (d of filtered(); track d.id) {
+      <div class="dcard">
+        <div class="dcard__head">
+          <div class="dcard__person">
+            <app-avatar [initials]="ini(d.name)" [size]="40" />
+            <div>
+              <div class="dcard__name">{{ d.name }}</div>
+              <app-status-badge [status]="d.status" [label]="t('STATUS.' + d.status)" size="xs" />
+            </div>
+          </div>
+          <button class="icon-btn"><i class="pi pi-ellipsis-h"></i></button>
+        </div>
+
+        <div class="dcard__phone"><i class="pi pi-phone"></i>{{ d.phone }}</div>
+        <div class="dcard__amount">{{ d.amount }} UZS</div>
+        <div class="dcard__deadline" [class.is-overdue]="d.overdue">
+          <i class="pi pi-calendar"></i>
+          <span>{{ 'DEBTORS.DEADLINE' | translate: { date: d.deadline } }}</span>
+          @if (d.overdue) {
+            <span class="dcard__passed">{{ 'DEBTORS.PASSED' | translate }}</span>
+          }
+        </div>
+
+        <div class="dcard__actions">
+          <app-button variant="primary" size="sm" icon="pi-comment" label="LABELS.SMS"
+            [fullWidth]="true" (buttonClick)="openSms(d)" />
+          <app-button variant="success" size="sm" icon="pi-check" label="LABELS.MARK_PAID" [fullWidth]="true" />
+          <button class="icon-btn icon-btn--bordered"><i class="pi pi-pencil"></i></button>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<app-sms-modal [open]="smsOpen()" [target]="smsTarget()" (close)="smsOpen.set(false)" />

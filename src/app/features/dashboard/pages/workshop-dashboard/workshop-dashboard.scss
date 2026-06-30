@@ -1,0 +1,170 @@
+.att-pct {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.debt-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-danger);
+}
+
+/* Kanban */
+.kanban {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  overflow-x: auto;
+}
+.kanban__col {
+  flex: 1;
+  min-width: 150px;
+}
+.kanban__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.kanban__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  &.k-new { background: var(--color-primary); }
+  &.k-progress { background: var(--color-warning); }
+  &.k-checking { background: #7c3aed; }
+  &.k-done { background: var(--color-success); }
+}
+.kanban__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.kanban__count {
+  margin-left: auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  background: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.kanban__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.kcard {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-left-width: 2px;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.15s;
+  &:hover { box-shadow: var(--shadow-sm); }
+  &--high { border-left-color: var(--color-danger); }
+  &--medium { border-left-color: var(--color-warning); }
+  &--low { border-left-color: var(--color-text-tertiary); }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  &__id {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+  &__title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.35;
+    margin: 0 0 8px;
+  }
+  &__deadline {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: var(--color-text-secondary);
+    i { font-size: 9px; }
+  }
+}
+
+/* Attendance list */
+.att-list {
+  max-height: 320px;
+  overflow-y: auto;
+}
+.att-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  &:hover { background: color-mix(in srgb, var(--color-bg-surface) 60%, transparent); }
+
+  &__name {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__time {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    i { font-size: 10px; }
+    &.is-came { color: var(--color-success); }
+    &.is-absent { color: var(--color-danger); }
+  }
+}
+
+/* Debtors list */
+.debt-list {
+  display: flex;
+  flex-direction: column;
+}
+.debt-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  &:first-child { border-top: none; }
+  &:hover { background: color-mix(in srgb, var(--color-bg-surface) 60%, transparent); }
+
+  &__info { flex: 1; min-width: 0; }
+  &__name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__phone { font-size: 10px; color: var(--color-text-secondary); }
+  &__amount { text-align: right; flex-shrink: 0; }
+  &__sum { font-size: 12px; font-weight: 700; color: var(--color-danger); }
+  &__date { font-size: 10px; color: var(--color-text-secondary); }
+}

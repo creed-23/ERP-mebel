@@ -1,0 +1,110 @@
+<div class="page">
+  <!-- Stat cards -->
+  <div class="grid grid-4">
+    <app-stat-card icon="pi pi-clipboard" iconColor="primary" value="14"
+      [label]="'LABELS.ORDERS' | translate" trend="+2" [trendUp]="true" />
+
+    <app-stat-card icon="pi pi-clock" iconColor="primary" value="8"
+      [label]="t('STATUS.inProgress') + ' · 57%'">
+      <app-ring-progress slot="top-right" [value]="57" [size]="48" [color]="primaryColor" />
+    </app-stat-card>
+
+    <app-stat-card icon="pi pi-dollar" iconColor="danger" value="4,200,000"
+      [label]="'OWNER.UZS_DEBT' | translate" trend="+1" [trendUp]="false" />
+
+    <app-stat-card icon="pi pi-users" iconColor="success" value="12"
+      [label]="'LABELS.WORKERS' | translate" trend="0" [trendUp]="true" />
+  </div>
+
+  <!-- Kanban + Attendance -->
+  <div class="grid grid-5">
+    <div class="panel col-3">
+      <div class="panel-head">
+        <h3 class="panel-title">Kanban</h3>
+        <app-button size="sm" icon="pi-plus" label="LABELS.NEW_ORDER" (buttonClick)="addOrder.emit()" />
+      </div>
+      <div class="kanban">
+        @for (col of columns(); track col.key) {
+          <div class="kanban__col">
+            <div class="kanban__head">
+              <span class="kanban__dot" [class]="col.dotClass"></span>
+              <span class="kanban__title">{{ 'KANBAN.' + col.key | translate }}</span>
+              <span class="kanban__count">{{ col.cards.length }}</span>
+            </div>
+            <div class="kanban__cards">
+              @for (card of col.cards.slice(0, 3); track card.id) {
+                <div class="kcard" [class]="'kcard--' + card.priority">
+                  <div class="kcard__top">
+                    <span class="kcard__id">{{ card.id }}</span>
+                    <app-avatar [initials]="card.avatar" [size]="20" />
+                  </div>
+                  <p class="kcard__title">{{ card.title }}</p>
+                  <div class="kcard__deadline"><i class="pi pi-calendar"></i>{{ card.deadline }}</div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Attendance -->
+    <div class="panel col-2">
+      <div class="panel-head">
+        <div>
+          <h3 class="panel-title">{{ 'NAV.ATTENDANCE' | translate }}</h3>
+          <p class="panel-sub">{{ cameCount() }}/{{ attendanceTotal() }} {{ 'LABELS.CAME' | translate }}</p>
+        </div>
+        <div class="att-pct">
+          <app-ring-progress [value]="attendancePct()" [size]="40" [color]="successColor" />
+          <span>{{ attendancePct() }}%</span>
+        </div>
+      </div>
+      <div class="att-list">
+        @for (a of attendance(); track a.name) {
+          <div class="att-row">
+            <app-avatar [initials]="a.avatar" [size]="28" [online]="a.came" />
+            <span class="att-row__name">{{ a.name }}</span>
+            @if (a.came) {
+              <span class="att-row__time is-came"><i class="pi pi-check-circle"></i>{{ a.time }}</span>
+            } @else {
+              <span class="att-row__time is-absent"><i class="pi pi-times-circle"></i>{{ 'LABELS.NOT_CAME' | translate }}</span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Bar chart + Debtors -->
+  <div class="grid grid-5">
+    <div class="panel panel--pad col-3">
+      <h3 class="panel-title">{{ 'OWNER.WEEKLY_STATUS' | translate }}</h3>
+      <p class="panel-sub">{{ 'OWNER.MON_SAT' | translate }}</p>
+      <app-bar-chart [data]="weekly()" [completedLabel]="t('OWNER.COMPLETED')" [createdLabel]="t('STATUS.new')" />
+    </div>
+
+    <div class="panel col-2">
+      <div class="panel-head">
+        <h3 class="panel-title">{{ 'LABELS.DEBTORS' | translate }}</h3>
+        <span class="debt-count">{{ 'OWNER.DEBT_COUNT' | translate: { count: debtors().length } }}</span>
+      </div>
+      <div class="debt-list">
+        @for (d of debtors(); track d.name) {
+          <div class="debt-row">
+            <app-avatar [initials]="ini(d.name)" [size]="32" />
+            <div class="debt-row__info">
+              <div class="debt-row__name">{{ d.name }}</div>
+              <div class="debt-row__phone">{{ d.phone }}</div>
+            </div>
+            <div class="debt-row__amount">
+              <div class="debt-row__sum">{{ d.amount }}</div>
+              <div class="debt-row__date">{{ d.deadline }}</div>
+            </div>
+            <app-button size="sm" icon="pi-comment" label="LABELS.SMS" (buttonClick)="onSms(d)" />
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

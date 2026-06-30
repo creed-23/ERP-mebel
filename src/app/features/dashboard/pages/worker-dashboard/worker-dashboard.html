@@ -1,0 +1,117 @@
+<div class="page">
+  <!-- Stat cards -->
+  <div class="grid grid-3">
+    <app-stat-card icon="pi pi-clipboard" iconColor="primary" value="7"
+      [label]="'LABELS.ACTIVE_ORDERS' | translate" trend="+1" [trendUp]="true" />
+    <app-stat-card icon="pi pi-clock" iconColor="warning" value="6.5"
+      [label]="'LABELS.WORK_HOURS' | translate" [trend]="t('WORKER.TODAY')" [trendUp]="true" />
+    <app-stat-card icon="pi pi-dollar" iconColor="success" value="2,400,000"
+      [label]="'WORKER.MONTH_EARNING' | translate" trend="+8%" [trendUp]="true" />
+  </div>
+
+  <!-- Orders + attendance -->
+  <div class="grid grid-3">
+    <div class="panel col-2">
+      <div class="panel-head">
+        <h3 class="panel-title">{{ 'NAV.ORDERS' | translate }}</h3>
+      </div>
+      <div class="table-scroll">
+        <table class="ftable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>{{ 'LABELS.CLIENT' | translate }}</th>
+              <th>{{ 'LABELS.DEADLINE' | translate }}</th>
+              <th>{{ 'LABELS.STATUS' | translate }}</th>
+              <th>{{ 'LABELS.ACTION' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (row of orders(); track row.id) {
+              <tr>
+                <td class="order-id">{{ row.id }}</td>
+                <td class="td-strong">{{ row.client }}</td>
+                <td><span class="deadline"><i class="pi pi-calendar"></i>{{ row.deadline }}</span></td>
+                <td><app-status-badge [status]="row.status" [label]="t('STATUS.' + row.status)" /></td>
+                <td>
+                  @if (row.status !== 'done' && row.status !== 'checking') {
+                    <app-button size="xs" variant="primary" label="LABELS.WORK_ON_IT" />
+                  } @else if (row.status === 'done') {
+                    <app-button size="xs" variant="success" icon="pi-check" label="LABELS.DONE_SHORT" />
+                  }
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Attendance card -->
+    <div class="panel panel--pad att-card">
+      <h3 class="panel-title att-card__title">{{ 'NAV.ATTENDANCE' | translate }}</h3>
+      <div class="att-card__clock">
+        <div class="att-card__time">09:14</div>
+        <app-status-badge status="active" [label]="'LABELS.STARTED' | translate" />
+      </div>
+      <div class="att-card__box">
+        <div class="att-card__row">
+          <span>{{ 'WORKER.CHECK_IN' | translate }}</span>
+          <span class="is-success">09:14</span>
+        </div>
+        <div class="att-card__row">
+          <span>{{ 'WORKER.CHECK_OUT' | translate }}</span>
+          <span class="muted">—</span>
+        </div>
+        <div class="att-card__row">
+          <span>{{ 'WORKER.WORK_TIME' | translate }}</span>
+          <span class="strong">6.5 {{ 'WORKER.HOURS_SUFFIX' | translate }}</span>
+        </div>
+      </div>
+      <div class="att-card__log">
+        <div class="att-card__log-title">{{ 'WORKER.TODAY_LOG' | translate }}</div>
+        @for (l of todayLog; track l.time) {
+          <div class="att-card__log-row">
+            <span class="muted">{{ l.time }}</span>
+            <span>{{ l.action | translate }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Catalog -->
+  <div class="panel">
+    <div class="panel-head">
+      <h3 class="panel-title">{{ 'NAV.DIMENSIONS' | translate }}</h3>
+      <div class="pills">
+        @for (c of cats; track c) {
+          <button class="pill pill--sm" [class.pill--active]="catFilter() === c" (click)="setFilter(c)">
+            {{ 'FURNITURE.' + c | translate }}
+          </button>
+        }
+      </div>
+    </div>
+    <div class="catalog">
+      @for (item of filtered(); track item.id) {
+        <div class="cat-card">
+          <div class="cat-card__img">
+            <i class="pi pi-box"></i>
+            @if (item.badge) {
+              <span class="cat-card__badge">{{ item.badge }}</span>
+            }
+          </div>
+          <div class="cat-card__body">
+            <p class="cat-card__title">{{ item.title }}</p>
+            <div class="cat-card__dims">
+              <span>{{ 'LABELS.WIDTH' | translate }}: <strong>{{ item.w }}</strong></span>
+              <span>{{ 'LABELS.LENGTH' | translate }}: <strong>{{ item.d }}</strong></span>
+              <span>{{ 'LABELS.HEIGHT' | translate }}: <strong>{{ item.h }}</strong></span>
+            </div>
+            <app-button variant="ghost" size="sm" label="COMMON.VIEW" (buttonClick)="view(item)" />
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

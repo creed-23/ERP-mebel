@@ -1,0 +1,120 @@
+.chart-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.legend {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  display: inline-block;
+  background: var(--color-text-tertiary);
+  &--primary { background: var(--color-primary); }
+  &--success { background: var(--color-success); }
+  &--c0 { background: var(--color-primary); }
+  &--c1 { background: #7c3aed; }
+  &--c2 { background: #0d9488; }
+  &--c3 { background: var(--color-warning); }
+  &--c4 { background: var(--color-danger); }
+}
+
+.legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  &__name {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-text-secondary);
+  }
+  &__val {
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+}
+
+.head-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ws-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+    color: var(--color-primary);
+    i { font-size: 13px; }
+  }
+}
+
+.row-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-top: 1px solid var(--color-border);
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  &__btn {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 6px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.15s;
+    &:hover { background: var(--color-bg-subtle); color: var(--color-text-primary); }
+    &--active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #fff;
+    }
+  }
+}

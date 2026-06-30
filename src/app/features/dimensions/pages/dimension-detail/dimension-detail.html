@@ -1,0 +1,216 @@
+<div class="page">
+  <!-- Header -->
+  <div class="page-header">
+    <div class="dd-head">
+      <button class="icon-btn icon-btn--bordered" (click)="back()"><i class="pi pi-chevron-left"></i></button>
+      <div>
+        <div class="dd-crumb">
+          <span>{{ 'DIMENSIONS.TITLE' | translate }}</span>
+          <i class="pi pi-chevron-right"></i>
+          <span class="dd-crumb__current">{{ productName() }}</span>
+        </div>
+        <h2 class="dd-title">{{ productName() }}</h2>
+      </div>
+    </div>
+    <div class="dd-actions">
+      <app-button variant="ghost" icon="pi-download" label="DIMENSIONS.DOWNLOAD_PDF" (buttonClick)="downloadPdf()" />
+      <app-button variant="primary" icon="pi-check" label="COMMON.SAVE" />
+    </div>
+  </div>
+
+  <div class="dd-grid">
+    <!-- Left column -->
+    <div class="dd-left">
+      <!-- Image -->
+      <div class="panel">
+        <div class="panel-head">
+          <h3 class="panel-title">{{ 'DIMENSIONS.PRODUCT_IMAGE' | translate }}</h3>
+          @if (imageUrl()) {
+            <button class="dd-clear" (click)="imageUrl.set(null)"><i class="pi pi-trash"></i>{{ 'COMMON.DELETE' | translate }}</button>
+          }
+        </div>
+        @if (imageUrl()) {
+          <div class="dd-img">
+            <img [src]="imageUrl()" [alt]="productName()" />
+            <button class="dd-img__replace" (click)="pickImage()"><i class="pi pi-upload"></i>{{ 'DIMENSIONS.REPLACE' | translate }}</button>
+          </div>
+        } @else {
+          <div class="dd-drop" (click)="pickImage()">
+            <div class="dd-drop__icon"><i class="pi pi-upload"></i></div>
+            <p class="dd-drop__title">{{ 'DIMENSIONS.UPLOAD_IMAGE' | translate }}</p>
+            <p class="dd-drop__hint">{{ 'DIMENSIONS.IMAGE_HINT' | translate }}</p>
+            <p class="dd-drop__hint">{{ 'DIMENSIONS.DROP_HINT' | translate }}</p>
+          </div>
+        }
+        <input #imgInput type="file" accept="image/*" hidden (change)="onImage($event)" />
+      </div>
+
+      <!-- Product info -->
+      <div class="panel panel--pad dd-info">
+        <h3 class="panel-title">{{ 'DIMENSIONS.PRODUCT_INFO' | translate }}</h3>
+        <div class="field">
+          <label class="input-label">{{ 'DIMENSIONS.NAME' | translate }}</label>
+          <input class="input" [ngModel]="productName()" (ngModelChange)="productName.set($event)" />
+        </div>
+        <div class="field">
+          <label class="input-label">{{ 'DIMENSIONS.CATEGORY' | translate }}</label>
+          <select class="input" [ngModel]="category()" (ngModelChange)="category.set($event)">
+            @for (c of categories; track c.value) {
+              <option [value]="c.value">{{ c.label | translate }}</option>
+            }
+          </select>
+        </div>
+        <div class="field">
+          <label class="input-label">{{ 'DIMENSIONS.NOTE' | translate }}</label>
+          <textarea class="input" rows="3" [ngModel]="description()" (ngModelChange)="description.set($event)"></textarea>
+        </div>
+      </div>
+
+      <!-- Files -->
+      <div class="panel panel--pad dd-files">
+        <div class="dd-files__head">
+          <h3 class="panel-title">{{ 'DIMENSIONS.FILES' | translate }}</h3>
+          <button class="dd-files__add" (click)="pickPdf()"><i class="pi pi-plus"></i>{{ 'DIMENSIONS.ADD_FILE' | translate }}</button>
+        </div>
+        <input #pdfInput type="file" accept=".pdf,.dwg,.dxf" hidden (change)="onPdf($event)" />
+        @if (pdfFiles().length === 0) {
+          <div class="dd-drop dd-drop--sm" (click)="pickPdf()">
+            <i class="pi pi-file"></i>
+            <p class="dd-drop__hint">{{ 'DIMENSIONS.UPLOAD_PDF' | translate }}</p>
+          </div>
+        } @else {
+          @for (f of pdfFiles(); track $index) {
+            <div class="dd-file">
+              <span class="dd-file__icon"><i class="pi pi-file-pdf"></i></span>
+              <div class="dd-file__info">
+                <div class="dd-file__name">{{ f.name }}</div>
+                <div class="dd-file__size">{{ f.size }}</div>
+              </div>
+              <button class="icon-btn"><i class="pi pi-download"></i></button>
+              <button class="icon-btn icon-btn--danger" (click)="removePdf($index)"><i class="pi pi-trash"></i></button>
+            </div>
+          }
+        }
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div class="dd-right">
+      <!-- Quick stats -->
+      <div class="grid grid-3">
+        <div class="panel panel--pad qstat">
+          <div class="qstat__label">{{ 'DIMENSIONS.TOTAL_PARTS' | translate }}</div>
+          <div class="qstat__value is-primary">{{ total() }}</div>
+          <div class="qstat__hint">{{ 'DIMENSIONS.PARTS' | translate }}</div>
+        </div>
+        <div class="panel panel--pad qstat">
+          <div class="qstat__label">{{ 'DIMENSIONS.LARGEST' | translate }}</div>
+          <div class="qstat__value is-sm">{{ maxLen() }} × {{ maxWid() }}</div>
+          <div class="qstat__hint">cm</div>
+        </div>
+        <div class="panel panel--pad qstat">
+          <div class="qstat__label">{{ 'DIMENSIONS.AVG_LENGTH' | translate }}</div>
+          <div class="qstat__value">{{ avgLen() }}</div>
+          <div class="qstat__hint">cm</div>
+        </div>
+      </div>
+
+      <!-- Dimension table -->
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <h3 class="panel-title">{{ 'DIMENSIONS.TABLE_TITLE' | translate }}</h3>
+            <p class="panel-sub">{{ 'DIMENSIONS.TABLE_SUB' | translate: { rows: rows().length, parts: total() } }}</p>
+          </div>
+          <app-button size="sm" icon="pi-plus" label="COMMON.ADD" (buttonClick)="addRow()" />
+        </div>
+
+        <div class="table-scroll">
+          <table class="ftable dd-table">
+            <thead>
+              <tr>
+                <th class="w-n">{{ 'DIMENSIONS.N' | translate }}</th>
+                <th class="ta-r">{{ 'DIMENSIONS.LENGTH' | translate }}</th>
+                <th class="ta-c">×</th>
+                <th class="ta-r">{{ 'DIMENSIONS.WIDTH' | translate }}</th>
+                <th class="ta-r">{{ 'DIMENSIONS.HEIGHT' | translate }}</th>
+                <th class="ta-r">{{ 'DIMENSIONS.AMOUNT' | translate }}</th>
+                <th class="ta-r">{{ 'COMMON.ACTIONS' | translate }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (row of rows(); track row.id; let i = $index) {
+                <tr [class.is-editing]="editingId() === row.id">
+                  <td class="td-n">{{ i + 1 }}</td>
+                  @if (editingId() === row.id) {
+                    <td class="ta-r"><input class="cell-input" type="number" [(ngModel)]="editBuf.length" /></td>
+                    <td class="ta-c">×</td>
+                    <td class="ta-r"><input class="cell-input" type="number" [(ngModel)]="editBuf.width" /></td>
+                    <td class="ta-r"><input class="cell-input" type="number" [(ngModel)]="editBuf.height" /></td>
+                    <td class="ta-r">
+                      <input class="cell-input cell-input--sm" type="number" [(ngModel)]="editBuf.amount"
+                        (keydown.enter)="saveEdit()" (keydown.escape)="cancelEdit()" />
+                    </td>
+                    <td class="ta-r">
+                      <div class="dd-row-actions">
+                        <button class="dd-save" (click)="saveEdit()"><i class="pi pi-check"></i>{{ 'COMMON.SAVE' | translate }}</button>
+                        <button class="icon-btn" (click)="cancelEdit()"><i class="pi pi-times"></i></button>
+                      </div>
+                    </td>
+                  } @else {
+                    <td class="ta-r td-num">{{ row.length }}</td>
+                    <td class="ta-c td-x">×</td>
+                    <td class="ta-r td-num">{{ row.width }}</td>
+                    <td class="ta-r td-muted">{{ row.height || '—' }}</td>
+                    <td class="ta-r td-amount" [class.is-high]="row.amount >= 4">{{ row.amount }}</td>
+                    <td class="ta-r">
+                      <div class="dd-row-actions dd-row-actions--hover">
+                        <button class="icon-btn" (click)="startEdit(row)"><i class="pi pi-pencil"></i></button>
+                        <button class="icon-btn icon-btn--danger" (click)="deleteConfirm.set(row.id)"><i class="pi pi-trash"></i></button>
+                      </div>
+                    </td>
+                  }
+                </tr>
+              }
+              @if (rows().length === 0) {
+                <tr>
+                  <td colspan="7" class="dd-empty">
+                    <i class="pi pi-box"></i>
+                    <p>{{ 'DIMENSIONS.EMPTY' | translate }}</p>
+                    <app-button variant="ghost" size="sm" icon="pi-plus" label="COMMON.ADD" (buttonClick)="addRow()" />
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <div class="dd-foot">
+          <div class="dd-foot__stats">
+            <span>{{ 'DIMENSIONS.TOTAL_ROWS' | translate }}: <strong>{{ rows().length }}</strong></span>
+            <span>{{ 'DIMENSIONS.TOTAL_PARTS_INLINE' | translate }}: <strong class="is-primary">{{ total() }} ta</strong></span>
+          </div>
+          <app-button variant="ghost" size="sm" icon="pi-download" label="DIMENSIONS.DOWNLOAD_PDF" (buttonClick)="downloadPdf()" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete confirm -->
+@if (deleteConfirm() !== null) {
+  <div class="dd-confirm">
+    <div class="dd-confirm__backdrop" (click)="deleteConfirm.set(null)"></div>
+    <div class="dd-confirm__box">
+      <div class="dd-confirm__icon"><i class="pi pi-trash"></i></div>
+      <div>
+        <h3 class="dd-confirm__title">{{ 'DIMENSIONS.DELETE_ROW' | translate }}</h3>
+        <p class="dd-confirm__text">{{ 'DIMENSIONS.DELETE_CONFIRM' | translate: { n: deleteConfirm() } }}</p>
+      </div>
+      <div class="dd-confirm__actions">
+        <app-button variant="outline-secondary" size="sm" [fullWidth]="true" label="COMMON.CANCEL" (buttonClick)="deleteConfirm.set(null)" />
+        <app-button variant="danger" size="sm" [fullWidth]="true" label="COMMON.DELETE" (buttonClick)="deleteRow(deleteConfirm()!)" />
+      </div>
+    </div>
+  </div>
+}

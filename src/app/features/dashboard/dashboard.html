@@ -1,3 +1,14 @@
-<h1>
-    {{"NAV.DASHBOARD" | translate}}
-</h1>
+@switch (role()) {
+  @case ('owner') {
+    <app-owner-dashboard (addOrder)="openOrderDrawer()" />
+  }
+  @case ('workshop') {
+    <app-workshop-dashboard (addOrder)="openOrderDrawer()" (sms)="openSms($event)" />
+  }
+  @case ('worker') {
+    <app-worker-dashboard />
+  }
+}
+
+<app-order-drawer [open]="orderDrawerOpen()" (close)="orderDrawerOpen.set(false)" />
+<app-sms-modal [open]="smsOpen()" [target]="smsTarget()" (close)="smsOpen.set(false)" />

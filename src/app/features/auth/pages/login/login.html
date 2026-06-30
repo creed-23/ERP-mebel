@@ -2,64 +2,70 @@
   <div class="login-page">
     <div class="login-card">
       <div class="logo-box">
-        <i class="pi pi-building"></i>
+        <i class="pi pi-th-large"></i>
       </div>
 
       <h1>{{ AppName }}</h1>
 
-      <p class="subtitle">Furniture factory management system</p>
+      <p class="subtitle">{{ 'AUTH.TAGLINE' | translate }}</p>
 
       <div class="tabs">
         <app-button
-          label="Phone"
-          icon="pi pi-phone"
+          label="AUTH.PHONE"
+          icon="pi-phone"
           [variant]="activeTab === 'phone' ? 'tab-active' : 'tab'"
           (buttonClick)="activeTab = 'phone'"
           [fullWidth]="true"
         />
 
         <app-button
-          label="Email"
-          icon="pi pi-envelope"
+          label="AUTH.EMAIL"
+          icon="pi-envelope"
           [variant]="activeTab === 'email' ? 'tab-active' : 'tab'"
           (buttonClick)="activeTab = 'email'"
           [fullWidth]="true"
         />
       </div>
 
-      <form [formGroup]="form" (ngSubmit)="submit()">
+      <form (ngSubmit)="submit()">
         @if (activeTab === 'phone') {
           <div class="field">
             <app-input
               icon="pi pi-phone"
-              [type]="'phone'"
-              [label]="'AUTH.PHONE'"
+              type="phone"
+              label="AUTH.PHONE"
               placeholder="AUTH.PHONE_PLACEHOLDER"
+              (valueChange)="phone = $event"
             />
           </div>
         }
 
         @if (activeTab === 'email') {
           <div class="field">
-            <app-input type="email" label="AUTH.EMAIL" placeholder="AUTH.EMAIL_PLACEHOLDER" />
+            <app-input type="email" label="AUTH.EMAIL" placeholder="AUTH.EMAIL_PLACEHOLDER"
+              (valueChange)="phone = $event" />
           </div>
         }
 
         <div class="field">
-          <app-input type="password" label="AUTH.PASSWORD" placeholder="AUTH.OTP_PLACEHOLDER" />
+          <app-input type="password" label="AUTH.PASSWORD" placeholder="AUTH.OTP_PLACEHOLDER"
+            (valueChange)="password = $event" />
         </div>
 
         <div class="options">
           <div class="remember">
-            <p-checkbox binary="true" formControlName="remember" />
-            <span>Remember me</span>
+            <p-checkbox binary="true" [(ngModel)]="remember" name="remember" />
+            <span>{{ 'AUTH.REMEMBER' | translate }}</span>
           </div>
 
-          <a href="#"> Forgot password? </a>
+          <a href="#">{{ 'AUTH.FORGOT' | translate }}</a>
         </div>
 
-        <app-button [fullWidth]="true" label="COMMON.SUBMIT" />
+        <app-button [fullWidth]="true" label="AUTH.SIGN_IN" type="submit" [loading]="loading()"
+          (buttonClick)="submit()" />
       </form>
+
+      <p class="login-foot">{{ 'AUTH.FOOTER' | translate: { app: AppName } }}</p>
     </div>
   </div>
 </div>

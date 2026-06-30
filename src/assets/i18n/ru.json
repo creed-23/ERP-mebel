@@ -3,7 +3,7 @@
     "SAVE": "Сохранить",
     "CANCEL": "Отмена",
     "DELETE": "Удалить",
-    "EDIT": "Редактировать",
+    "EDIT": "Изменить",
     "ADD": "Добавить",
     "SEARCH": "Поиск",
     "LOADING": "Загрузка...",
@@ -22,17 +22,20 @@
     "STATUS": "Статус",
     "CREATED_AT": "Дата создания",
     "UPDATED_AT": "Дата обновления",
-    "TOTAL": "Итого",
+    "TOTAL": "Всего",
     "PAGE": "Страница",
     "OF": "из",
-    "ROWS_PER_PAGE": "Строк на странице"
+    "ROWS_PER_PAGE": "Строк на странице",
+    "VIEW": "Просмотр",
+    "PRINT": "Печать",
+    "DOWNLOAD": "Скачать"
   },
 
   "AUTH": {
     "LOGIN": "Войти",
     "LOGOUT": "Выйти",
     "PHONE": "Номер телефона",
-    "EMAIL": "Электронная почта",
+    "EMAIL": "Email",
     "PASSWORD": "Пароль",
     "PHONE_PLACEHOLDER": "90 123 45 67",
     "EMAIL_PLACEHOLDER": "mebel@example.com",
@@ -40,15 +43,21 @@
     "OTP_SENT": "Код отправлен",
     "OTP_PLACEHOLDER": "• • • • • •",
     "SEND_CODE": "Отправить код",
-    "RESEND_CODE": "Отправить повторно",
-    "RESEND_IN": "Повторная отправка: {{sec}} с",
+    "RESEND_CODE": "Отправить снова",
+    "RESEND_IN": "Повторно: {{sec}} с",
     "WELCOME": "Добро пожаловать!",
-    "ENTER_PHONE": "Введите номер телефона для продолжения"
+    "ENTER_PHONE": "Введите номер телефона для продолжения",
+    "TAGLINE": "Система управления мебельной фабрикой",
+    "REMEMBER": "Запомнить",
+    "FORGOT": "Забыли пароль?",
+    "SIGN_IN": "Войти в систему",
+    "FOOTER": "© 2024 {{app}}. Все права защищены."
   },
 
   "NAV": {
     "DASHBOARD": "Главная",
-    "MASTERS": "Mастера",
+    "HOME": "Главная",
+    "MASTERS": "Мастера",
     "TABLES": "Столы",
     "SESSIONS": "Сеансы",
     "PRODUCTS": "Продукты",
@@ -56,39 +65,221 @@
     "REPORTS": "Отчёты",
     "SETTINGS": "Настройки",
     "USERS": "Пользователи",
-    "MASTER": "Mастер",
-    "MEBEL_SIZE": "Размер Мебеля"
+    "MASTER": "Мастер",
+    "MEBEL_SIZE": "Размеры мебели",
+    "WORKSHOPS": "Цеха",
+    "WORKERS": "Мастера",
+    "ORDERS": "Мои заказы",
+    "ATTENDANCE": "Посещаемость",
+    "DIMENSIONS": "Размеры",
+    "SALARY": "Зарплата",
+    "DEBTORS": "Должники"
   },
 
-  "TABLE": {
-    "TITLE": "Столы",
-    "ADD": "Добавить стол",
-    "NAME": "Название",
-    "STATUS": "Статус",
-    "HOURLY_RATE": "Стоимость в час",
-    "AVAILABLE": "Свободен",
-    "BUSY": "Занят",
-    "RESERVED": "Забронирован",
-    "START_SESSION": "Начать сеанс",
-    "END_SESSION": "Завершить сеанс",
-    "DURATION": "Продолжительность",
-    "AMOUNT": "Сумма"
+  "ROLE": {
+    "owner": "Руководитель",
+    "workshop": "Нач. цеха",
+    "worker": "Мастер"
   },
+
+  "STATUS": {
+    "done": "Выполнено",
+    "inProgress": "В процессе",
+    "pending": "Ожидание",
+    "cancelled": "Отменено",
+    "new": "Новый",
+    "checking": "Проверка",
+    "danger": "Просрочено",
+    "warning": "Приближается",
+    "active": "Активно"
+  },
+
+  "KANBAN": {
+    "new": "Новый",
+    "inProgress": "В процессе",
+    "checking": "Проверка",
+    "done": "Выполнено"
+  },
+
+  "FURNITURE": {
+    "all": "Все",
+    "divan": "Диван",
+    "armchair": "Кресло",
+    "tableChair": "Стол-стул",
+    "bed": "Кровать",
+    "office": "Офис"
+  },
+
+  "LABELS": {
+    "WORKSHOPS": "Цеха",
+    "WORKERS": "Мастера",
+    "ORDERS": "Заказ",
+    "DEBTORS": "Должники",
+    "REVENUE": "Доход",
+    "ACTION": "Действие",
+    "SALARY": "Зарплата",
+    "ADVANCE": "Аванс",
+    "REMAINDER": "Остаток",
+    "DAYS": "Дни",
+    "HOURS": "Часы",
+    "RATE": "Тариф",
+    "NAME": "Мастер",
+    "CLIENT": "Клиент",
+    "DEADLINE": "Дедлайн",
+    "STATUS": "Статус",
+    "PHONE": "Телефон",
+    "AMOUNT": "Сумма",
+    "NOTE": "Примечание",
+    "CATEGORY": "Категория",
+    "LENGTH": "Длина",
+    "WIDTH": "Ширина",
+    "HEIGHT": "Высота",
+    "PAID": "Оплачено",
+    "PARTIAL": "Частично",
+    "UNPAID": "Не оплачено",
+    "NEW_ORDER": "Новый заказ",
+    "ORDER_NAME": "Название",
+    "CLIENT_NAME": "Клиент",
+    "MASTER": "Мастер",
+    "FURNITURE_TYPE": "Тип мебели",
+    "DIMENSIONS": "Размеры",
+    "FILES": "Файлы",
+    "PRICE": "Цена (UZS)",
+    "SMS": "Отправить SMS",
+    "MARK_PAID": "Оплачено",
+    "EXPORT": "Экспорт Excel",
+    "PRINT": "Печать",
+    "ADD_AVANS": "Добавить аванс",
+    "ALL": "Все",
+    "OVERDUE": "Просроченные",
+    "THIS_WEEK": "На этой неделе",
+    "CAME": "Пришёл",
+    "NOT_CAME": "Не пришёл",
+    "STARTED": "Работа начата",
+    "ADD_DIMENSION": "Добавить размер",
+    "SEND": "Отправить",
+    "RECEIVE_COPY": "Получить копию",
+    "DRAFT_NOTE": "Отправляется через SMS Draft",
+    "DATE": "Дата",
+    "ACTIVE_ORDERS": "активных заказов",
+    "WORK_HOURS": "часов",
+    "MONTH_EARNING": "Заработок",
+    "WORK_ON_IT": "Работаю",
+    "DONE_SHORT": "Выполнено"
+  },
+
+  "OWNER": {
+    "REVENUE_DYNAMICS": "Динамика дохода",
+    "LAST_6_MONTHS": "Последние 6 месяцев · млн UZS",
+    "RECEIVED": "Поступило",
+    "COMPLETED": "Выполнено",
+    "ORDERS_BY_WORKSHOP": "Заказы по цехам",
+    "TOTAL_COUNT": "{{count}} всего",
+    "PCS": "шт",
+    "ALL_WORKSHOPS": "Все цеха",
+    "WEEKLY_STATUS": "Недельный статус заказов",
+    "MON_SAT": "Пн–Сб",
+    "UZS_DEBT": "UZS задолженность",
+    "DEBT_COUNT": "{{count}} шт"
+  },
+
+  "WORKER": {
+    "TODAY": "сегодня",
+    "MONTH_EARNING": "UZS · Заработок за месяц",
+    "TODAY_LOG": "Журнал за сегодня",
+    "CHECK_IN": "Вход",
+    "CHECK_OUT": "Выход",
+    "WORK_TIME": "Рабочее время",
+    "HOURS_SUFFIX": "часов",
+    "CAME_IN": "Пришёл",
+    "LUNCH": "Обед",
+    "RETURNED": "Вернулся"
+  },
+
+  "SALARY": {
+    "TITLE": "Зарплата",
+    "TOTAL_SALARY": "UZS · Всего зарплата",
+    "TOTAL_ADVANCE": "UZS · Аванс",
+    "TOTAL_REMAINDER": "UZS · Остаток",
+    "ALL_WORKSHOPS": "Все цеха"
+  },
+
+  "DEBTORS": {
+    "TITLE": "Должники",
+    "TAB_ALL": "Все",
+    "TAB_OVERDUE": "Просроченные",
+    "TAB_WEEK": "На этой неделе",
+    "TAB_PAID": "Оплачено",
+    "DEADLINE": "Срок: {{date}}",
+    "PASSED": "(просрочено)"
+  },
+
+  "DIMENSIONS": {
+    "TITLE": "Размеры мебели",
+    "PRODUCT_IMAGE": "Фото товара",
+    "PRODUCT_INFO": "Информация о товаре",
+    "NAME": "Название",
+    "CATEGORY": "Категория",
+    "NOTE": "Примечание",
+    "FILES": "Файлы",
+    "ADD_FILE": "Добавить файл",
+    "UPLOAD_IMAGE": "Загрузите фото",
+    "IMAGE_HINT": "JPG, PNG, WEBP · макс 10 МБ",
+    "DROP_HINT": "или перетащите сюда",
+    "REPLACE": "Заменить",
+    "UPLOAD_PDF": "Загрузите PDF или DWG файл",
+    "TOTAL_PARTS": "Всего деталей",
+    "PARTS": "деталей",
+    "LARGEST": "Наибольший размер",
+    "AVG_LENGTH": "Средняя длина",
+    "TABLE_TITLE": "Таблица размеров",
+    "TABLE_SUB": "{{rows}} строк · {{parts}} деталей",
+    "N": "N",
+    "LENGTH": "Длина",
+    "WIDTH": "Ширина",
+    "HEIGHT": "Высота",
+    "AMOUNT": "Кол-во",
+    "TOTAL_ROWS": "Всего строк",
+    "TOTAL_PARTS_INLINE": "Всего деталей",
+    "DOWNLOAD_PDF": "Скачать PDF",
+    "EMPTY": "Размеры ещё не добавлены",
+    "DELETE_ROW": "Удалить строку",
+    "DELETE_CONFIRM": "Удалить строку {{n}}? Это действие нельзя отменить."
+  },
+
+  "ORDER": {
+    "TITLE": "Новый заказ",
+    "ORDER_NAME": "Название заказа",
+    "CLIENT_NAME": "Имя клиента",
+    "MASTER": "Мастер",
+    "DEADLINE": "Дедлайн",
+    "FURNITURE_TYPE": "Тип мебели",
+    "DIMENSIONS": "Размеры",
+    "NOTE": "Примечание",
+    "NOTE_PLACEHOLDER": "Дополнительная информация по заказу...",
+    "FILES": "Файлы",
+    "PRICE": "Цена (UZS)",
+    "PAYMENT_STATUS": "Статус оплаты",
+    "DROP_FILES": "Перетащите файлы сюда или",
+    "CHOOSE": "выберите",
+    "FILE_HINT": "PDF, JPG, PNG — макс 10MB"
+  },
+
+  "SMS": {
+    "TITLE": "Отправить SMS",
+    "TEXT": "Текст SMS",
+    "TEMPLATE": "Уважаемый {{name}},\nУ вас задолженность {{amount}} UZS. Пожалуйста, оплатите в срок."
+  },
+
+  "AVANS": {
+    "TITLE": "Добавить аванс"
+  },
+
   "COLUMNS": {
     "NAME": "Имя",
     "POSITION": "Должность",
     "EMAIL": "Email",
     "SALARY": "Зарплата"
-  },
-
-  "PRODUCT": {
-    "TITLE": "Продукты",
-    "ADD": "Добавить продукт",
-    "NAME": "Название",
-    "PRICE": "Цена",
-    "CATEGORY": "Категория",
-    "QUANTITY": "Количество",
-    "UNIT": "Единица измерения"
   },
 
   "MESSAGES": {
@@ -99,9 +290,11 @@
     "ERROR_GENERIC": "Произошла ошибка",
     "ERROR_NETWORK": "Ошибка сети. Попробуйте снова",
     "NO_DATA": "Данные не найдены",
-    "REQUIRED": "Это поле обязательно для заполнения",
-    "MIN_LENGTH": "Введите не менее {{min}} символов",
-    "INVALID_PHONE": "Неверный номер телефона"
+    "REQUIRED": "Это поле обязательно",
+    "MIN_LENGTH": "Введите минимум {{min}} символов",
+    "INVALID_PHONE": "Неверный номер телефона",
+    "SMS_SENT": "SMS отправлено",
+    "LOGIN_SUCCESS": "Вы успешно вошли в систему"
   },
 
   "SETTINGS": {

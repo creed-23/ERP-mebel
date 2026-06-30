@@ -1,0 +1,47 @@
+<div class="page">
+  <div class="page-header">
+    <h2 class="page-title">{{ 'DIMENSIONS.TITLE' | translate }}</h2>
+    <app-button icon="pi-plus" label="LABELS.ADD_DIMENSION" (buttonClick)="modalOpen.set(true)" />
+  </div>
+
+  <!-- Category pills -->
+  <div class="pills">
+    @for (c of cats; track c) {
+      <button class="pill" [class.pill--active]="catFilter() === c" (click)="catFilter.set(c)">
+        {{ 'FURNITURE.' + c | translate }}
+      </button>
+    }
+  </div>
+
+  <!-- Catalog grid -->
+  <div class="dgrid">
+    @for (item of filtered(); track item.id) {
+      <div class="dcard">
+        <div class="dcard__img" (click)="view(item)">
+          <i class="pi pi-box"></i>
+          @if (item.badge) {
+            <span class="dcard__badge">{{ item.badge }}</span>
+          }
+        </div>
+        <div class="dcard__body">
+          <div>
+            <p class="dcard__title">{{ item.title }}</p>
+            <p class="dcard__cat">{{ 'FURNITURE.' + item.category | translate }}</p>
+          </div>
+          <div class="dcard__dims">
+            <div><span>{{ 'LABELS.WIDTH' | translate }} cm</span><strong>{{ item.w }}</strong></div>
+            <div><span>{{ 'LABELS.LENGTH' | translate }} cm</span><strong>{{ item.d }}</strong></div>
+            <div><span>{{ 'LABELS.HEIGHT' | translate }} cm</span><strong>{{ item.h }}</strong></div>
+          </div>
+          <div class="dcard__actions">
+            <button class="dcard__act" (click)="view(item)"><i class="pi pi-pencil"></i>{{ 'COMMON.EDIT' | translate }}</button>
+            <button class="dcard__act dcard__act--danger"><i class="pi pi-trash"></i>{{ 'COMMON.DELETE' | translate }}</button>
+            <button class="icon-btn icon-btn--bordered"><i class="pi pi-download"></i></button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+<app-dimension-modal [open]="modalOpen()" (close)="modalOpen.set(false)" />
