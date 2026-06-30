@@ -116,6 +116,12 @@
   }
 }
 
+// Jadval komponentlari ichida ham ishlashi uchun (app-table) global variant
+.td-strong {
+  font-weight: $font-weight-medium;
+  color: var(--color-text-primary);
+}
+
 .table-scroll {
   overflow-x: auto;
   @include custom-scrollbar;

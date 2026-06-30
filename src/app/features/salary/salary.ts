@@ -5,13 +5,15 @@ import { StatCard } from '@shared/components/stat-card/stat-card';
 import { Avatar } from '@shared/components/avatar/avatar';
 import { Button } from '@shared/components/button/button';
 import { AvansModal } from '@shared/components/overlays/avans-modal/avans-modal';
+import { TableColumn, TableDefalt } from '@shared/components/tables/table-defalt/table-defalt';
+import { TableCellDirective } from '@shared/components/tables/table-defalt/table-cell.directive';
 import { SalaryRow } from '@shared/interfaces/factory.interface';
 import { initials } from '@shared/utils/text.util';
 
 @Component({
   selector: 'app-salary',
   standalone: true,
-  imports: [TranslatePipe, StatCard, Avatar, Button, AvansModal],
+  imports: [TranslatePipe, StatCard, Avatar, Button, AvansModal, TableDefalt, TableCellDirective],
   templateUrl: './salary.html',
   styleUrl: './salary.scss',
 })
@@ -21,6 +23,16 @@ export class Salary {
 
   rows = signal<SalaryRow[]>([]);
   month = signal('Iyun 2024');
+
+  columns: TableColumn[] = [
+    { key: 'name', label: 'LABELS.NAME' },
+    { key: 'days', label: 'LABELS.DAYS' },
+    { key: 'hours', label: 'LABELS.HOURS' },
+    { key: 'rate', label: 'LABELS.RATE' },
+    { key: 'salary', label: 'LABELS.SALARY' },
+    { key: 'avans', label: 'LABELS.ADVANCE' },
+    { key: 'qoldiq', label: 'LABELS.REMAINDER' },
+  ];
 
   avansOpen = signal(false);
   selectedWorker = signal<SalaryRow | null>(null);

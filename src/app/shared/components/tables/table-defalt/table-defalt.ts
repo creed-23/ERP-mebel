@@ -1,6 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  ContentChildren,
+  Input,
+  Output,
+  EventEmitter,
+  OnChanges,
+  QueryList,
+  SimpleChanges,
+  TemplateRef,
+} from '@angular/core';
 import { TranslatePipe } from '@ngx-translate/core';
+import { TableCellDirective } from './table-cell.directive';
 
 export interface TableColumn {
   key: string;
@@ -24,10 +35,15 @@ export class TableDefalt implements OnChanges {
   @Input() data: Record<string, any>[] = [];
   @Input() pageSize: number = 5;
   @Input() isView: boolean = false;
+  /** Standart amallar ustunini (ko'rish/tahrir/o'chirish) ko'rsatish */
+  @Input() showActions: boolean = true;
 
   @Output() view = new EventEmitter<TableAction>();
   @Output() edit = new EventEmitter<TableAction>();
   @Output() delete = new EventEmitter<TableAction>();
+
+  /** Maxsus katak shablonlari (appTableCell direktivasi orqali) */
+  @ContentChildren(TableCellDirective) cellTemplates!: QueryList<TableCellDirective>;
 
   currentPage = 1;
   totalPages = 1;
@@ -90,6 +106,16 @@ export class TableDefalt implements OnChanges {
 
   get endIndex(): number {
     return Math.min(this.currentPage * this.pageSize, this.data.length);
+  }
+
+  /** Berilgan kalit uchun maxsus katak shablonini qaytaradi (bo'lmasa null) */
+  cellTemplate(key: string): TemplateRef<unknown> | null {
+    return this.cellTemplates?.find((t) => t.key === key)?.template ?? null;
+  }
+
+  /** Amallar ustuni umuman ko'rsatiladimi (standart yoki maxsus shablon) */
+  get hasActions(): boolean {
+    return this.showActions || !!this.cellTemplate('actions');
   }
 
   onView(row: Record<string, any>, index: number): void {

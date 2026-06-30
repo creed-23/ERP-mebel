@@ -1,17 +1,30 @@
 <div class="gt-wrapper">
-  <div class="gt-header" *ngIf="title || showAddButton">
+  <div class="gt-header" *ngIf="title || showAddButton || showPdfButton">
     <h3 class="gt-title" *ngIf="title">{{ title }}</h3>
 
-    <app-button
-      *ngIf="showAddButton"
-      label="Qo'shish"
-      icon="pi-plus"
-      iconPosition="left"
-      variant="ghost"
-      size="sm"
-      [disabled]="isAdding"
-      (buttonClick)="startAdd()"
-    ></app-button>
+    <div class="gt-header-actions">
+      <app-button
+        *ngIf="showPdfButton"
+        label="PDF"
+        icon="pi-download"
+        iconPosition="left"
+        variant="ghost"
+        size="sm"
+        [disabled]="!data.length"
+        (buttonClick)="downloadPdf()"
+      ></app-button>
+
+      <app-button
+        *ngIf="showAddButton"
+        label="Qo'shish"
+        icon="pi-plus"
+        iconPosition="left"
+        variant="ghost"
+        size="sm"
+        [disabled]="isAdding"
+        (buttonClick)="startAdd()"
+      ></app-button>
+    </div>
   </div>
 
   <div class="gt-scroll">

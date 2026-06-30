@@ -5,13 +5,15 @@ import { FactoryDataService } from '@core/services/factory-data.service';
 import { StatCard } from '@shared/components/stat-card/stat-card';
 import { StatusBadge } from '@shared/components/status-badge/status-badge';
 import { Button } from '@shared/components/button/button';
+import { TableColumn, TableDefalt } from '@shared/components/tables/table-defalt/table-defalt';
+import { TableCellDirective } from '@shared/components/tables/table-defalt/table-cell.directive';
 import { CatalogItem, FurnitureCategory, OrderRow } from '@shared/interfaces/factory.interface';
 import { PathResources } from '@shared/resources/path_resource';
 
 @Component({
   selector: 'app-worker-dashboard',
   standalone: true,
-  imports: [TranslatePipe, StatCard, StatusBadge, Button],
+  imports: [TranslatePipe, StatCard, StatusBadge, Button, TableDefalt, TableCellDirective],
   templateUrl: './worker-dashboard.html',
   styleUrl: './worker-dashboard.scss',
 })
@@ -23,6 +25,13 @@ export class WorkerDashboard {
   orders = signal<OrderRow[]>([]);
   catalog = signal<CatalogItem[]>([]);
   catFilter = signal<FurnitureCategory | 'all'>('all');
+
+  ordersColumns: TableColumn[] = [
+    { key: 'id', label: '#' },
+    { key: 'client', label: 'LABELS.CLIENT' },
+    { key: 'deadline', label: 'LABELS.DEADLINE' },
+    { key: 'status', label: 'LABELS.STATUS' },
+  ];
 
   cats: (FurnitureCategory | 'all')[] = ['all', 'divan', 'armchair', 'bed', 'office', 'tableChair'];
 
