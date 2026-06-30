@@ -1,0 +1,49 @@
+@use 'abstracts/variables' as *;
+
+.app-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+
+  overflow: hidden;
+
+  transition: 0.3s;
+}
+
+.app-layout.collapsed {
+  grid-template-columns: 80px 1fr;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+
+  padding: 1.5rem;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+
+  z-index: 1999;
+}
+
+@media (max-width: $mobile) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+  .main-content {
+    padding: $spacing-1;
+  }
+}

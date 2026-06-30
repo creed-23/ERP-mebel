@@ -1,0 +1,16 @@
+<div class="masters">
+  <div class="card-container">
+    <app-icon-card text="12" decription="userlar" />
+    <app-icon-card text="12" decription="userlar" />
+    <app-icon-card text="12" decription="userlar" />
+    <app-icon-card text="12" decription="userlar" />
+  </div>
+  <div>
+    <app-table
+      [columns]="columns"
+      [data]="users"
+      (view)="handleView($event)"
+      [isView]="true"
+    ></app-table>
+  </div>
+</div>

@@ -1,0 +1,274 @@
+@use 'abstracts/variables' as *;
+
+.size-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: $spacing-4;
+  align-items: start;
+}
+
+.size-left {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+
+  border-radius: $radius-xl;
+
+  position: sticky;
+}
+
+.size-image {
+  width: 100%;
+  overflow: hidden;
+  border-radius: $radius-lg;
+}
+
+.size-title {
+  display: flex;
+  gap: $spacing-3;
+  padding: $spacing-3;
+  background-color: var(--color-bg-surface);
+}
+.title-card {
+  display: flex;
+  flex-direction: column;
+
+  background: var(--color-bg-base);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+
+  overflow: hidden;
+}
+
+.size-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: $spacing-3 $spacing-4;
+
+  transition: background $transition-fast;
+
+  &:hover {
+    background: var(--color-bg-hover);
+  }
+}
+
+.title-label {
+  label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    color: var(--color-text-secondary);
+  }
+}
+
+.title {
+  text-align: right;
+
+  p {
+    margin: 0;
+
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: var(--color-text-primary);
+  }
+}
+
+.title-card hr {
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.files-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-xl;
+  padding: $spacing-4;
+}
+
+.files-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: $spacing-4;
+
+  h3 {
+    margin: 0;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: var(--color-text-primary);
+  }
+}
+
+.add-file-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  color: var(--color-primary);
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+
+  transition: 0.2s;
+
+  &:hover {
+    color: var(--color-primary-hover);
+  }
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: $spacing-3;
+
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+
+  background: var(--color-bg-base);
+
+  margin-bottom: $spacing-3;
+}
+
+.file-left {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+}
+
+.file-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: $radius-md;
+
+  background: #fdeceb;
+
+  i {
+    color: #ef4444;
+    font-size: 22px;
+  }
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-name {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.file-size {
+  margin-top: 2px;
+
+  font-size: $font-size-xs;
+  color: var(--color-text-secondary);
+}
+
+.file-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  border-radius: $radius-md;
+
+  cursor: pointer;
+
+  color: var(--color-text-secondary);
+
+  transition: 0.2s;
+
+  &:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-primary);
+  }
+
+  &.danger:hover {
+    color: var(--color-danger);
+  }
+}
+
+.size-right {
+  min-width: 0;
+
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-xl;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: $tablet) {
+  .size-container {
+    grid-template-columns: 1fr;
+  }
+
+  .size-left {
+    position: static;
+  }
+}
+
+@media (max-width: $mobile) {
+  .size-container {
+    gap: $spacing-3;
+  }
+
+  .size-left,
+  .size-right {
+    padding: $spacing-2;
+    border-radius: $radius-lg;
+  }
+
+  .size-title {
+    padding: $spacing-2 $spacing-3;
+  }
+
+  .title-label label {
+    font-size: $font-size-xs;
+  }
+
+  .title p {
+    font-size: $font-size-sm;
+  }
+
+  .dimensions-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-2;
+  }
+
+  .dimension-item {
+    padding: $spacing-2;
+  }
+
+  .dim-label {
+    font-size: 10px;
+  }
+
+  .dim-value {
+    font-size: $font-size-sm;
+  }
+}

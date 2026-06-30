@@ -1,0 +1,22 @@
+<div class="master-container">
+  <div class="card-container">
+    <app-icon-card text="12" decription="userlar" />
+    <app-icon-card text="12" decription="userlar" />
+    <app-icon-card text="12" decription="userlar" />
+    <app-icon-card text="12" decription="userlar" />
+  </div>
+  <div class="main">
+    <div class="calendar">
+      <app-calendar
+        [masters]="masters"
+        [schedule]="schedule"
+        [workStartHour]="9"
+        [workEndHour]="19"
+        [lateThresholdMin]="15"
+      />
+    </div>
+    <div class="overtime">
+      <app-overtime-list [data]="items" />
+    </div>
+  </div>
+</div>

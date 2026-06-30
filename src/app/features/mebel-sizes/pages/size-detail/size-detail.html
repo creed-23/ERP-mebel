@@ -1,0 +1,100 @@
+<div class="size-container">
+  <div class="size-left">
+    <div class="size-image">
+      <app-swiper [images]="images" aspectRatio="16/9" (slideChange)="onSlideChange($event)" />
+    </div>
+    <div class="title-card">
+      <div class="size-title">
+        <div class="title-label">
+          <label>Title : </label>
+        </div>
+        <div class="title">
+          <p>Shkaf</p>
+        </div>
+      </div>
+      <hr />
+      <div class="size-title">
+        <div class="title-label">
+          <label>Decription : </label>
+        </div>
+        <div class="title">
+          <p>2 ta eshikli shkaf</p>
+        </div>
+      </div>
+      <hr />
+      <div class="size-title">
+        <div class="title-label">
+          <label>uzunligi : </label>
+        </div>
+        <div class="title">
+          <p>120 sm</p>
+        </div>
+      </div>
+      <div class="size-title">
+        <div class="title-label">
+          <label>eni : </label>
+        </div>
+        <div class="title">
+          <p>60 sm</p>
+        </div>
+      </div>
+      <div class="size-title">
+        <div class="title-label">
+          <label>Balandligi : </label>
+        </div>
+        <div class="title">
+          <p>180 sm</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="files-card">
+      <div class="files-header">
+        <h3>Fayllar</h3>
+
+        <app-button
+          label="Fayl qo'shish"
+          [fullWidth]="true"
+          icon="pi-plus"
+          variant="ghost"
+          size="sm"
+        />
+      </div>
+
+      <div class="file-item">
+        <div class="file-left">
+          <div class="file-icon">
+            <i class="pi pi-file-pdf"></i>
+          </div>
+
+          <div class="file-info">
+            <div class="file-name">texnik_chizma.pdf</div>
+            <div class="file-size">2.4 MB</div>
+          </div>
+        </div>
+
+        <div class="file-actions">
+          <button class="icon-btn">
+            <i class="pi pi-download"></i>
+          </button>
+
+          <button class="icon-btn danger">
+            <i class="pi pi-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="size-right">
+    <app-generic-table
+      title="O'lchamlar jadvali"
+      [columns]="columns"
+      [data]="rows"
+      [idKey]="'id'"
+      [createEmptyRow]="createEmptyRow"
+      (rowAdded)="onAdded($event)"
+      (rowUpdated)="onUpdated($event)"
+      (rowDeleted)="onDeleted($event)"
+    ></app-generic-table>
+  </div>
+</div>

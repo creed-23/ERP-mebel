@@ -1,0 +1,115 @@
+{
+  "COMMON": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete",
+    "EDIT": "Edit",
+    "ADD": "Add",
+    "SEARCH": "Search",
+    "LOADING": "Loading...",
+    "CONFIRM": "Confirm",
+    "YES": "Yes",
+    "NO": "No",
+    "BACK": "Back",
+    "CLOSE": "Close",
+    "REFRESH": "Refresh",
+    "EXPORT": "Export",
+    "FILTER": "Filter",
+    "CLEAR": "Clear",
+    "SUBMIT": "Submit",
+    "RESET": "Reset",
+    "ACTIONS": "Actions",
+    "STATUS": "Status",
+    "CREATED_AT": "Created at",
+    "UPDATED_AT": "Updated at",
+    "TOTAL": "Total",
+    "PAGE": "Page",
+    "OF": "of",
+    "ROWS_PER_PAGE": "Rows per page"
+  },
+
+  "AUTH": {
+    "LOGIN": "Sign In",
+    "LOGOUT": "Sign Out",
+    "PHONE": "Phone number",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "PHONE_PLACEHOLDER": "90 123 45 67",
+    "EMAIL_PLACEHOLDER": "mebel@example.com",
+    "OTP_CODE": "Verification code",
+    "OTP_SENT": "Code sent",
+    "OTP_PLACEHOLDER": "• • • • • •",
+    "SEND_CODE": "Send code",
+    "RESEND_CODE": "Resend code",
+    "RESEND_IN": "Resend in {{sec}}s",
+    "WELCOME": "Welcome!",
+    "ENTER_PHONE": "Enter your phone number to continue"
+  },
+
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "MASTERS": "Masters",
+    "TABLES": "Tables",
+    "SESSIONS": "Sessions",
+    "PRODUCTS": "Products",
+    "CASHIER": "Cashier",
+    "REPORTS": "Reports",
+    "SETTINGS": "Settings",
+    "USERS": "Users",
+    "MASTER": "Master",
+    "MEBEL_SIZE":"Mebel Size"
+  },
+
+  "TABLE": {
+    "TITLE": "Tables",
+    "ADD": "Add table",
+    "NAME": "Name",
+    "STATUS": "Status",
+    "HOURLY_RATE": "Hourly rate",
+    "AVAILABLE": "Available",
+    "BUSY": "Busy",
+    "RESERVED": "Reserved",
+    "START_SESSION": "Start session",
+    "END_SESSION": "End session",
+    "DURATION": "Duration",
+    "AMOUNT": "Amount"
+  },
+  "COLUMNS": {
+    "NAME": "Name",
+    "POSITION": "Position",
+    "EMAIL": "Email",
+    "SALARY": "Salary"
+  },
+  "PRODUCT": {
+    "TITLE": "Products",
+    "ADD": "Add product",
+    "NAME": "Name",
+    "PRICE": "Price",
+    "CATEGORY": "Category",
+    "QUANTITY": "Quantity",
+    "UNIT": "Unit"
+  },
+
+  "MESSAGES": {
+    "SUCCESS_SAVE": "Saved successfully",
+    "SUCCESS_DELETE": "Deleted successfully",
+    "SUCCESS_UPDATE": "Updated successfully",
+    "CONFIRM_DELETE": "Are you sure you want to delete?",
+    "ERROR_GENERIC": "Something went wrong",
+    "ERROR_NETWORK": "Network error. Please try again",
+    "NO_DATA": "No data found",
+    "REQUIRED": "This field is required",
+    "MIN_LENGTH": "Enter at least {{min}} characters",
+    "INVALID_PHONE": "Invalid phone number"
+  },
+
+  "SETTINGS": {
+    "TITLE": "Settings",
+    "LANGUAGE": "Language",
+    "THEME": "Theme",
+    "LIGHT": "Light",
+    "DARK": "Dark",
+    "PROFILE": "Profile",
+    "CHANGE_LANG": "Change language"
+  }
+}

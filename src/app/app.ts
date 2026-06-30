@@ -1,12 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ThemeService } from '../styles/themes/theme.service';
+import { LanguageService } from './i18n/language.service';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('mebel-erp');
+  themeService = inject(ThemeService);
+  private lang = inject(LanguageService);
 }

@@ -1,0 +1,64 @@
+<div class="input-wrapper">
+  @if (label) {
+    <label class="input-label">
+      {{ label | translate }}
+
+      @if (required) {
+        <span class="text-danger">*</span>
+      }
+    </label>
+  }
+
+  <div
+    class="input-container"
+    [ngClass]="{
+      'has-icon': !!icon,
+      'has-password': type === 'password',
+      'has-phone': type === 'phone',
+      'input-sm': size === 'sm',
+      'input-md': size === 'md',
+      'input-lg': size === 'lg',
+    }"
+  >
+    @if (type === 'phone') {
+      <span class="phone-prefix">+998</span>
+    }
+
+    @if (icon && type !== 'phone') {
+      <i [ngClass]="icon" class="main-icon"></i>
+    }
+
+    @if (type !== 'textarea') {
+      <input
+        [type]="type === 'phone' ? 'tel' : currentInputType"
+        [attr.inputmode]="type === 'phone' ? 'numeric' : null"
+        [placeholder]="placeholder | translate"
+        [disabled]="disabled"
+        [readonly]="readonly"
+        [ngClass]="inputClasses"
+        [value]="value"
+        (input)="onInput($event)"
+      />
+    }
+
+    @if (type === 'password') {
+      <i
+        class="password-toggle pi"
+        [ngClass]="isPasswordVisible ? 'pi-eye-slash' : 'pi-eye'"
+        (click)="togglePasswordVisibility()"
+      >
+      </i>
+    }
+
+    @if (type === 'textarea') {
+      <textarea
+        [placeholder]="placeholder | translate"
+        [disabled]="disabled"
+        [readonly]="readonly"
+        [ngClass]="inputClasses"
+        [value]="value"
+        (input)="onInput($event)"
+      ></textarea>
+    }
+  </div>
+</div>

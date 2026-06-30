@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+// ============================================================
+// styles.scss — Asosiy entry point
+// Angular loyihangizning angular.json'da:
+//   "styles": ["src/styles.scss"]
+// ============================================================
+
+// 1. Abstracts (o'zgaruvchilar, mixin'lar — CSS chiqarmaydi)
+@use 'styles/abstracts/variables' as *;
+@use 'styles/abstracts/mixins' as *;
+
+// 2. Theme token'lari (CSS custom properties)
+@use 'styles/abstracts/themes';
+
+// 3. Reset & base
+@use 'styles/base/reset';
+
+// 4. Komponentlar
+@use 'styles/base/components';
+
+// 5. Utilities
+@use 'styles/base/utilities';
+
+// ─── Ixtiyoriy: Default theme (JS yuklanishidan oldin) ───────
+// Sahifa birinchi ko'rinishida oq bo'lmasligi uchun
+:root {
+  color-scheme: light dark;
+}
+
+// JS yuklanmasa ham ishlashi uchun fallback
+html:not([data-theme]) {
+  @media (prefers-color-scheme: dark) {
+    // Dark mode tokenlarni takrorlash shart emas,
+    // JS ThemeService avtomatik qo'yadi.
+    // Lekin FOUC (Flash of Unstyled Content) oldini olish uchun:
+    background-color: #0f1117;
+    color: #f1f5f9;
+  }
+}

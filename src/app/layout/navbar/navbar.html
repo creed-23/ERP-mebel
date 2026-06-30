@@ -1,0 +1,23 @@
+<header class="navbar">
+  <div class="left">
+    <button class="mobile-menu-btn" (click)="sidebarService.toggleMobile()">
+      <i class="pi pi-bars"></i>
+    </button>
+
+    <p-breadcrumb [model]="items" [home]="home" />
+  </div>
+
+  <div class="right">
+    <app-lang-switcher />
+
+    <button class="theme-btn" (click)="themeService.toggle()">
+      <i
+        class="pi"
+        [class.pi-sun]="themeService.isDark()"
+        [class.pi-moon]="!themeService.isDark()"
+      ></i>
+    </button>
+
+    <div class="user">JT</div>
+  </div>
+</header>

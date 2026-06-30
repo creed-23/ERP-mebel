@@ -1,0 +1,32 @@
+<div class="overtime">
+  <div class="overtime-header">
+    <h2 class="title">Tashqi ish log</h2>
+    <app-button size="sm" variant="ghost" label="qoshish" icon=" pi-plus" />
+  </div>
+  <hr />
+  <div class="overtime-main">
+    @for (item of data; track $index) {
+      <div class="card">
+        <div class="card-information">
+          <div class="card-title">
+            <h3>{{ item.title }}</h3>
+          </div>
+          <div class="card-time">
+            <span> <i class="pi pi-calendar"></i> {{ item.date }} </span>
+            <div>
+              <i class="pi pi-clock"></i><span> {{ item.startTime }}</span
+              >-<span>{{ item.endTime }}</span>
+            </div>
+          </div>
+          <div class="card-location">
+            <span><i class="pi pi-map-marker"></i> {{ item.location }}</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <p>{{ item.time }}</p>
+          <app-button icon="pi-trash" label="delete" variant="outline-danger" size="sm" />
+        </div>
+      </div>
+    }
+  </div>
+</div>

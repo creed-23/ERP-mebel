@@ -1,0 +1,141 @@
+<div class="cal-wrap">
+  <!-- Legend -->
+  <div class="cal-legend">
+    <div class="leg-item"><span class="leg-dot l-ok"></span> O'z vaqtida</div>
+    <div class="leg-item"><span class="leg-dot l-late"></span> Kechikdi</div>
+    <div class="leg-item"><span class="leg-dot l-abs"></span> Kelmadi</div>
+    <div class="leg-item"><span class="leg-dot l-none"></span> Ma'lumot yo'q</div>
+  </div>
+
+  <!-- Header -->
+  <div class="cal-header">
+    <h2 class="cal-title">{{ monthTitle }}</h2>
+    <div class="cal-nav">
+      <button class="nav-btn" (click)="prevMonth()">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="15 18 9 12 15 6" />
+        </svg>
+      </button>
+      <button class="nav-btn" (click)="nextMonth()">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="9 18 15 12 9 6" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="cal-grid">
+    <div class="day-label" *ngFor="let d of DAYS">{{ d }}</div>
+
+    <div
+      *ngFor="let day of calendarDays"
+      class="day-cell"
+      [class.other-month]="day.isOtherMonth"
+      [class.s-ok]="day.dayStatus === 'ok' && !day.isOtherMonth"
+      [class.s-late]="day.dayStatus === 'late' && !day.isOtherMonth"
+      [class.s-abs]="day.dayStatus === 'absent' && !day.isOtherMonth"
+      [class.s-mix]="day.dayStatus === 'mixed' && !day.isOtherMonth"
+      [class.is-today]="isToday(day)"
+      [class.is-selected]="day.key === selectedKey"
+      (click)="selectDay(day)"
+    >
+      <div class="day-num">{{ day.day }}</div>
+      <div class="dot-row">
+        <span
+          *ngFor="let a of day.attendances.slice(0, 4)"
+          class="mdot"
+          [style.background]="a.master.color"
+        ></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="cal-sidebar">
+    <ng-container *ngIf="selectedKey; else noSel">
+      <div class="sb-head">
+        <div class="sb-date">{{ selectedDateLabel }}</div>
+        <span
+          *ngIf="selectedBadge"
+          class="sb-badge"
+          [class.b-ok]="selectedBadge.type === 'ok'"
+          [class.b-late]="selectedBadge.type === 'late'"
+          [class.b-abs]="selectedBadge.type === 'absent'"
+          [class.b-mix]="selectedBadge.type === 'mixed'"
+          >{{ selectedBadge.text }}</span
+        >
+      </div>
+
+      <div class="work-hours">
+        Ish vaqti: <strong>{{ workStartLabel }}</strong> – <strong>{{ workEndLabel }}</strong>
+      </div>
+
+      <ng-container *ngIf="selectedDay?.attendances?.length; else noData">
+        <div class="master-card" *ngFor="let a of selectedDay?.attendances">
+          <div class="m-avatar" [style.background]="a.master.color">
+            {{ a.master.name[0] }}
+          </div>
+          <div class="m-info">
+            <div class="m-name">{{ a.master.name }}</div>
+
+            <div class="m-time" *ngIf="a.record">
+              <span
+                class="chip"
+                [class.chip-ok]="a.status === 'ok'"
+                [class.chip-late]="a.status === 'late'"
+              >
+                {{ a.record.in }}
+              </span>
+              <span class="arrow">→</span>
+              <span
+                class="chip"
+                [class.chip-ok]="a.earlyLeaveMinutes === 0"
+                [class.chip-early]="a.earlyLeaveMinutes > 0"
+              >
+                {{ a.record.out }}
+              </span>
+              <span class="tag-late" *ngIf="a.lateMinutes > 0">+{{ a.lateMinutes }} daq kech</span>
+              <span class="tag-early" *ngIf="a.earlyLeaveMinutes > 0"
+                >{{ a.earlyLeaveMinutes }} daq erta</span
+              >
+            </div>
+          </div>
+
+          <span
+            class="m-status-chip"
+            [class.chip-ok]="a.status === 'ok'"
+            [class.chip-late]="a.status === 'late'"
+            [class.chip-abs]="a.status === 'absent'"
+            >{{ getStatusLabel(a.status) }}</span
+          >
+        </div>
+      </ng-container>
+
+      <ng-template #noData>
+        <p class="empty-msg">Bu kun uchun ma'lumot yo'q</p>
+      </ng-template>
+    </ng-container>
+    <ng-template #noSel>
+      <p class="empty-msg">Kun tanlang</p>
+    </ng-template>
+  </div>
+</div>

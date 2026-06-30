@@ -1,0 +1,388 @@
+// ============================================================
+// _utilities.scss — Utility / Helper classes
+// ============================================================
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// ─── Display ─────────────────────────────────────────────────
+.d-flex {
+  display: flex;
+}
+.d-grid {
+  display: grid;
+}
+.d-block {
+  display: block;
+}
+.d-inline {
+  display: inline;
+}
+.d-inline-flex {
+  display: inline-flex;
+}
+.d-none {
+  display: none;
+}
+
+// ─── Flex utilities ──────────────────────────────────────────
+.flex-row {
+  flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+.flex-1 {
+  flex: 1;
+}
+.flex-auto {
+  flex: auto;
+}
+.flex-none {
+  flex: none;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+.items-center {
+  align-items: center;
+}
+.items-end {
+  align-items: flex-end;
+}
+.items-stretch {
+  align-items: stretch;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+
+// Gap
+@each $key,
+  $val
+    in (
+      1: $spacing-1,
+      2: $spacing-2,
+      3: $spacing-3,
+      4: $spacing-4,
+      5: $spacing-5,
+      6: $spacing-6,
+      8: $spacing-8,
+      10: $spacing-10
+    )
+{
+  .gap-#{$key} {
+    gap: $val;
+  }
+  .gap-x-#{$key} {
+    column-gap: $val;
+  }
+  .gap-y-#{$key} {
+    row-gap: $val;
+  }
+}
+
+// ─── Spacing ─────────────────────────────────────────────────
+$spacing-map: (
+  0: 0,
+  1: $spacing-1,
+  2: $spacing-2,
+  3: $spacing-3,
+  4: $spacing-4,
+  5: $spacing-5,
+  6: $spacing-6,
+  8: $spacing-8,
+  10: $spacing-10,
+  12: $spacing-12,
+  16: $spacing-16,
+);
+
+@each $key, $val in $spacing-map {
+  .m-#{$key} {
+    margin: $val;
+  }
+  .mx-#{$key} {
+    margin-inline: $val;
+  }
+  .my-#{$key} {
+    margin-block: $val;
+  }
+  .mt-#{$key} {
+    margin-top: $val;
+  }
+  .mr-#{$key} {
+    margin-right: $val;
+  }
+  .mb-#{$key} {
+    margin-bottom: $val;
+  }
+  .ml-#{$key} {
+    margin-left: $val;
+  }
+
+  .p-#{$key} {
+    padding: $val;
+  }
+  .px-#{$key} {
+    padding-inline: $val;
+  }
+  .py-#{$key} {
+    padding-block: $val;
+  }
+  .pt-#{$key} {
+    padding-top: $val;
+  }
+  .pr-#{$key} {
+    padding-right: $val;
+  }
+  .pb-#{$key} {
+    padding-bottom: $val;
+  }
+  .pl-#{$key} {
+    padding-left: $val;
+  }
+}
+
+.mx-auto {
+  margin-inline: auto;
+}
+
+// ─── Typography ──────────────────────────────────────────────
+.text-xs {
+  font-size: $font-size-xs;
+}
+.text-sm {
+  font-size: $font-size-sm;
+}
+.text-base {
+  font-size: $font-size-base;
+}
+.text-md {
+  font-size: $font-size-md;
+}
+.text-lg {
+  font-size: $font-size-lg;
+}
+.text-xl {
+  font-size: $font-size-xl;
+}
+.text-2xl {
+  font-size: $font-size-2xl;
+}
+.text-3xl {
+  font-size: $font-size-3xl;
+}
+
+.font-regular {
+  font-weight: $font-weight-regular;
+}
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+.capitalize {
+  text-transform: capitalize;
+}
+
+.truncate {
+  @include truncate(1);
+}
+.line-clamp-2 {
+  @include truncate(2);
+}
+.line-clamp-3 {
+  @include truncate(3);
+}
+
+// ─── Rang utilitylari ────────────────────────────────────────
+.text-primary {
+  color: var(--color-text-primary);
+}
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+.text-tertiary {
+  color: var(--color-text-tertiary);
+}
+.text-disabled {
+  color: var(--color-text-disabled);
+}
+.text-brand {
+  color: var(--color-primary);
+}
+.text-success {
+  color: var(--color-success);
+}
+.text-warning {
+  color: var(--color-warning);
+}
+.text-danger {
+  color: var(--color-danger);
+}
+.text-info {
+  color: var(--color-info);
+}
+
+.bg-base {
+  background: var(--color-bg-base);
+}
+.bg-surface {
+  background: var(--color-bg-surface);
+}
+.bg-elevated {
+  background: var(--color-bg-elevated);
+}
+.bg-subtle {
+  background: var(--color-bg-subtle);
+}
+
+// ─── Border radius ───────────────────────────────────────────
+.rounded-sm {
+  border-radius: $radius-sm;
+}
+.rounded {
+  border-radius: $radius-md;
+}
+.rounded-lg {
+  border-radius: $radius-lg;
+}
+.rounded-xl {
+  border-radius: $radius-xl;
+}
+.rounded-2xl {
+  border-radius: $radius-2xl;
+}
+.rounded-full {
+  border-radius: $radius-full;
+}
+
+// ─── Shadow ──────────────────────────────────────────────────
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+.shadow-none {
+  box-shadow: none;
+}
+
+// ─── Width / Height ──────────────────────────────────────────
+.w-full {
+  width: 100%;
+}
+.w-auto {
+  width: auto;
+}
+.h-full {
+  height: 100%;
+}
+.h-screen {
+  height: 100vh;
+}
+.min-h-screen {
+  min-height: 100vh;
+}
+
+// ─── Overflow ────────────────────────────────────────────────
+.overflow-hidden {
+  overflow: hidden;
+}
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+}
+.overflow-y-auto {
+  overflow-y: auto;
+}
+
+// ─── Cursor ──────────────────────────────────────────────────
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-default {
+  cursor: default;
+}
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+// ─── Position ────────────────────────────────────────────────
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.sticky {
+  position: sticky;
+}
+
+// ─── Responsive hide/show ────────────────────────────────────
+.hide-mobile {
+  @include max-md {
+    display: none !important;
+  }
+}
+.show-mobile {
+  @include md {
+    display: none !important;
+  }
+}
+.hide-desktop {
+  @include md {
+    display: none !important;
+  }
+}

@@ -1,0 +1,178 @@
+// ============================================================
+// image-swiper.component.scss
+// Ranglar — _themes.scss (--color-*, --shadow-*)
+// Masofa/radius/shrift/transition — _variables.scss
+// Haqiqiy yo'lni loyihangizga moslang:
+// ============================================================
+@use 'abstracts/variables' as *;
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.swiper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: $radius-lg;
+  background: var(--color-bg-subtle);
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+}
+
+.swiper-viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.swiper-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform $transition-normal;
+
+  &--dragging {
+    transition: none;
+  }
+}
+
+.swiper-slide {
+  position: relative;
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+}
+
+.swiper-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: $spacing-6 $spacing-4 $spacing-3;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  color: #fff;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+}
+
+// ─── Tugmalar ──────────────────────────────────────────────
+.swiper-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: $radius-full;
+  background: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-size: $font-size-lg;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  opacity: 0.9;
+  transition:
+    opacity $transition-fast,
+    background $transition-fast;
+  z-index: 2;
+
+  &:hover:not(:disabled) {
+    opacity: 1;
+    background: var(--color-bg-surface);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &--prev {
+    left: $spacing-3;
+  }
+
+  &--next {
+    right: $spacing-3;
+  }
+}
+
+.swiper-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: $spacing-3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-2;
+  z-index: 2;
+}
+
+.swiper-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: $radius-full;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition:
+    background $transition-fast,
+    transform $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  &--active {
+    background: #fff;
+    transform: scale(1.25);
+  }
+}
+
+.swiper-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-tertiary);
+  font-size: $font-size-sm;
+}
+
+// ───────────── Responsive ─────────────
+@media (max-width: $bp-md) {
+  .swiper-arrow {
+    width: 30px;
+    height: 30px;
+    font-size: $font-size-base;
+  }
+
+  .swiper-caption {
+    font-size: $font-size-xs;
+    padding: $spacing-4 $spacing-3 $spacing-2;
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .swiper-arrow {
+    display: none; // kichik ekranda barmoq bilan suriladi, tugmalar kerak emas
+  }
+}

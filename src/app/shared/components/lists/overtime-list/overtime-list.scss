@@ -1,0 +1,119 @@
+@use 'abstracts/variables' as *;
+
+.overtime {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+
+  background-color: var(--color-bg-surface);
+  border-radius: $radius-lg;
+
+  .overtime-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-inline: $spacing-4;
+    padding-top: $spacing-2;
+
+    .title {
+      font-size: $font-size-md;
+    }
+  }
+
+  .overtime-main {
+    padding: $spacing-3;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3;
+    .card {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: $spacing-4;
+
+      padding: $spacing-4;
+
+      background-color: var(--color-bg-inset);
+      border-radius: $radius-md;
+
+      .card-information {
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-2;
+
+        .card-title {
+          h3 {
+            font-size: $font-size-md;
+            margin: 0;
+          }
+        }
+
+        .card-time {
+          display: flex;
+          flex-wrap: wrap;
+          gap: $spacing-4;
+        }
+
+        .card-location {
+          word-break: break-word;
+        }
+      }
+
+      .card-actions {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: $spacing-2;
+
+        p {
+          font-size: $font-size-md;
+          color: var(--color-text-primary);
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .overtime {
+    .overtime-main {
+      .card {
+        padding: $spacing-3;
+
+        .card-time {
+          gap: $spacing-2;
+        }
+      }
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: $mobile) {
+  .overtime {
+    .overtime-header {
+      align-items: center;
+      gap: $spacing-2;
+    }
+
+    .overtime-main {
+      .card {
+        flex-direction: column;
+
+        .card-actions {
+          width: 100%;
+
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

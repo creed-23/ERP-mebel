@@ -1,0 +1,160 @@
+@use 'abstracts/variables' as *;
+:host {
+  display: block;
+  width: 100%;
+  font-family: $font-family-base;
+}
+
+.gt-wrapper {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.gt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-4;
+  border-bottom: 1px solid var(--color-border); 
+}
+
+.gt-title {
+  margin: 0;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: var(--color-text-primary);
+}
+
+.gt-actions-group {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-1;
+  justify-content: flex-end;
+}
+
+.gt-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+// ─── Jadval — rasmdagi grid uslubi: har bir katakda chiziq ────
+.gt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $font-size-sm;
+  min-width: 460px;
+
+  th,
+  td {
+    border-bottom: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+  }
+
+  th:last-child,
+  td:last-child {
+    border-right: none;
+  }
+
+  thead th {
+    background: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-weight: $font-weight-semibold;
+    text-align: left;
+    padding: $spacing-2 $spacing-3;
+    white-space: nowrap;
+  }
+
+  tbody td {
+    padding: $spacing-2 $spacing-3;
+    color: var(--color-text-primary);
+    vertical-align: middle;
+    height: 40px; // qator balandligini doim bir xil tutadi
+    box-sizing: border-box;
+  }
+
+  tbody tr {
+    transition: background $transition-fast;
+
+    &:hover {
+      background: var(--color-bg-overlay);
+    }
+  }
+
+  .gt-row--editing,
+  .gt-row--adding {
+    background: var(--color-primary-subtle);
+  }
+
+  .gt-row--empty td {
+    text-align: center;
+    padding: $spacing-8;
+    color: var(--color-text-tertiary);
+    height: auto;
+  }
+}
+
+.gt-col-n {
+  width: 44px;
+  text-align: center;
+  color: var(--color-text-tertiary);
+  font-weight: $font-weight-medium;
+}
+
+.gt-col-actions {
+  width: 84px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.gt-cell--separator {
+  color: var(--color-text-tertiary);
+  font-weight: $font-weight-semibold;
+}
+
+// ─── Input — qator balandligini o'zgartirmasligi uchun
+//      bordersiz, faqat tagiga chiziq tushadigan uslub ───────
+.gt-input {
+  display: block;
+  width: 100%;
+  height: 24px;
+  margin: 0;
+  padding: 0 0 2px 0;
+  font: inherit;
+  font-size: $font-size-sm;
+  color: var(--color-text-primary);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border-strong);
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-bottom-color: var(--color-border-focus);
+  }
+}
+
+// ───────────── Responsive ─────────────
+@media (max-width: $bp-md) {
+  .gt-header {
+    flex-wrap: wrap;
+  }
+
+  .gt-table {
+    font-size: $font-size-xs;
+
+    thead th,
+    tbody td {
+      padding: $spacing-1 $spacing-2;
+    }
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .gt-table {
+    min-width: 400px;
+  }
+}

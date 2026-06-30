@@ -1,0 +1,62 @@
+<div class="product-card" (click)="onRouter()">
+  <app-badge variant="info" class="badge-yangi" size="lg">Yangi</app-badge>
+
+  <!-- Rasm qismi -->
+  <div class="card-image">
+    <img
+      *ngIf="product.imageUrl; else placeholder"
+      [src]="product.imageUrl"
+      [alt]="product.name"
+      class="product-img"
+    />
+    <ng-template #placeholder>
+      <div class="img-placeholder"></div>
+    </ng-template>
+  </div>
+
+  <!-- Mahsulot nomi va kategoriya -->
+  <div class="card-info">
+    <h3 class="product-nomi">{{ product.name }}</h3>
+    <p class="product-kategoriya">{{ product.category }}</p>
+  </div>
+
+  <!-- O'lchamlar -->
+  <div class="dimensions-row">
+    <div class="dimension-item">
+      <span class="dim-label">Kengligi cm</span>
+      <span class="dim-value">{{ product.dimensions.length }}</span>
+    </div>
+    <div class="dimension-item">
+      <span class="dim-label">Uzunlik cm</span>
+      <span class="dim-value">{{ product.dimensions.width }}</span>
+    </div>
+    <div class="dimension-item">
+      <span class="dim-label">Balandigi cm</span>
+      <span class="dim-value">{{ product.dimensions.height }}</span>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Tahrir, O'chirish, Yuklab olish tugmalari -->
+  <div class="action-row">
+    <app-button
+      (buttonClick)="onEdit()"
+      size="sm"
+      variant="outline-secondary"
+      label="COMMON.EDIT"
+      icon="pi-pen-to-square"
+      [fullWidth]="true"
+    />
+
+    <app-button
+      label="COMMON.DELETE"
+      (buttonClick)="onDelete()"
+      icon="pi-trash"
+      size="sm"
+      variant="outline-danger"
+      [fullWidth]="true"
+    />
+  </div>
+</div>

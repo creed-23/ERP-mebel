@@ -1,0 +1,65 @@
+<div>
+  <div class="login-page">
+    <div class="login-card">
+      <div class="logo-box">
+        <i class="pi pi-building"></i>
+      </div>
+
+      <h1>{{ AppName }}</h1>
+
+      <p class="subtitle">Furniture factory management system</p>
+
+      <div class="tabs">
+        <app-button
+          label="Phone"
+          icon="pi pi-phone"
+          [variant]="activeTab === 'phone' ? 'tab-active' : 'tab'"
+          (buttonClick)="activeTab = 'phone'"
+          [fullWidth]="true"
+        />
+
+        <app-button
+          label="Email"
+          icon="pi pi-envelope"
+          [variant]="activeTab === 'email' ? 'tab-active' : 'tab'"
+          (buttonClick)="activeTab = 'email'"
+          [fullWidth]="true"
+        />
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        @if (activeTab === 'phone') {
+          <div class="field">
+            <app-input
+              icon="pi pi-phone"
+              [type]="'phone'"
+              [label]="'AUTH.PHONE'"
+              placeholder="AUTH.PHONE_PLACEHOLDER"
+            />
+          </div>
+        }
+
+        @if (activeTab === 'email') {
+          <div class="field">
+            <app-input type="email" label="AUTH.EMAIL" placeholder="AUTH.EMAIL_PLACEHOLDER" />
+          </div>
+        }
+
+        <div class="field">
+          <app-input type="password" label="AUTH.PASSWORD" placeholder="AUTH.OTP_PLACEHOLDER" />
+        </div>
+
+        <div class="options">
+          <div class="remember">
+            <p-checkbox binary="true" formControlName="remember" />
+            <span>Remember me</span>
+          </div>
+
+          <a href="#"> Forgot password? </a>
+        </div>
+
+        <app-button [fullWidth]="true" label="COMMON.SUBMIT" />
+      </form>
+    </div>
+  </div>
+</div>

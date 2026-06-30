@@ -1,0 +1,13 @@
+<div>
+  @for (item of products; track item.id) {
+    <app-img-card
+      [product]="item"
+      [route]="[PathResources.MEBEL_SIZE, item.id]"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)"
+      (download)="onDownload($event)"
+      (viewPdf)="onViewPdf($event)"
+      (viewImage)="onViewImage($event)"
+    />
+  }
+</div>

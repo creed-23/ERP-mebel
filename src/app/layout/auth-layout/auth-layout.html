@@ -1,0 +1,18 @@
+<div>
+  <header class="navbar">
+    <div class="right">
+      <app-lang-switcher />
+
+      <button class="theme-btn" (click)="themeService.toggle()">
+        <i
+          class="pi"
+          [class.pi-sun]="themeService.isDark()"
+          [class.pi-moon]="!themeService.isDark()"
+        ></i>
+      </button>
+    </div>
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

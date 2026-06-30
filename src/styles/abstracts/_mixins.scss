@@ -1,0 +1,223 @@
+// ============================================================
+// _mixins.scss — Reusable mixins & functions
+// ============================================================
+@use 'variables' as *;
+
+// ─── Responsive breakpoints ──────────────────────────────────
+@mixin sm {
+  @media (min-width: #{$bp-sm}) {
+    @content;
+  }
+}
+@mixin md {
+  @media (min-width: #{$bp-md}) {
+    @content;
+  }
+}
+@mixin lg {
+  @media (min-width: #{$bp-lg}) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: #{$bp-xl}) {
+    @content;
+  }
+}
+
+@mixin max-sm {
+  @media (max-width: #{$bp-sm - 1}) {
+    @content;
+  }
+}
+@mixin max-md {
+  @media (max-width: #{$bp-md - 1}) {
+    @content;
+  }
+}
+@mixin max-lg {
+  @media (max-width: #{$bp-lg - 1}) {
+    @content;
+  }
+}
+
+// ─── Flexbox yordamchilar ────────────────────────────────────
+@mixin flex($direction: row, $align: center, $justify: flex-start, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// ─── Typography ──────────────────────────────────────────────
+@mixin text($size, $weight: $font-weight-regular, $line-height: $line-height-normal) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// ─── Interaktiv elementlar ───────────────────────────────────
+@mixin interactive {
+  cursor: pointer;
+  transition:
+    background-color $transition-fast,
+    color $transition-fast,
+    border-color $transition-fast,
+    box-shadow $transition-fast,
+    opacity $transition-fast;
+
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+// Focus ring (accessibility)
+@mixin focus-ring($color: var(--color-border-focus), $offset: 2px) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: $offset;
+  }
+}
+
+// ─── Pozitsiya ───────────────────────────────────────────────
+@mixin absolute-fill {
+  position: absolute;
+  inset: 0;
+}
+
+@mixin fixed-fill {
+  position: fixed;
+  inset: 0;
+}
+
+// ─── Vizual effektlar ────────────────────────────────────────
+@mixin glass($blur: 12px) {
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+}
+
+@mixin hide-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: $radius-full;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: $radius-full;
+    &:hover {
+      background: var(--color-border-strong);
+    }
+  }
+}
+
+// ─── Surface mixin (card, panel) ─────────────────────────────
+@mixin surface($level: 1) {
+  @if $level == 1 {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  } @else if $level == 2 {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+  } @else if $level == 3 {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-strong);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+// ─── Badge / status chip ─────────────────────────────────────
+@mixin badge-variant($color-name) {
+  background: var(--color-#{$color-name}-subtle);
+  color: var(--color-#{$color-name}-text);
+  border: 1px solid color-mix(in srgb, var(--color-#{$color-name}) 20%, transparent);
+}
+
+// ─── Button variant ──────────────────────────────────────────
+@mixin btn-variant($color-name) {
+  background: var(--color-#{$color-name});
+  color: var(--color-text-inverse);
+  border: 1px solid var(--color-#{$color-name});
+
+  &:hover:not(:disabled) {
+    background: var(--color-#{$color-name}-hover);
+    border-color: var(--color-#{$color-name}-hover);
+  }
+
+  &:active:not(:disabled) {
+    background: var(--color-#{$color-name}-active);
+    border-color: var(--color-#{$color-name}-active);
+  }
+}
+
+@mixin btn-outline-variant($color-name) {
+  background: transparent;
+  color: var(--color-#{$color-name});
+  border: 1px solid var(--color-#{$color-name});
+
+  &:hover:not(:disabled) {
+    background: var(--color-#{$color-name}-subtle);
+  }
+
+  &:active:not(:disabled) {
+    background: color-mix(in srgb, var(--color-#{$color-name}-subtle) 150%, transparent);
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}

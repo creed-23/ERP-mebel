@@ -1,0 +1,117 @@
+{
+  "COMMON": {
+    "SAVE": "Saqlash",
+    "CANCEL": "Bekor qilish",
+    "DELETE": "O'chirish",
+    "EDIT": "Tahrirlash",
+    "ADD": "Qo'shish",
+    "SEARCH": "Qidirish",
+    "LOADING": "Yuklanmoqda...",
+    "CONFIRM": "Tasdiqlash",
+    "YES": "Ha",
+    "NO": "Yo'q",
+    "BACK": "Orqaga",
+    "CLOSE": "Yopish",
+    "REFRESH": "Yangilash",
+    "EXPORT": "Eksport",
+    "FILTER": "Filtrlash",
+    "CLEAR": "Tozalash",
+    "SUBMIT": "Yuborish",
+    "RESET": "Tiklash",
+    "ACTIONS": "Amallar",
+    "STATUS": "Holat",
+    "CREATED_AT": "Yaratilgan sana",
+    "UPDATED_AT": "Yangilangan sana",
+    "TOTAL": "Jami",
+    "PAGE": "Sahifa",
+    "OF": "dan",
+    "ROWS_PER_PAGE": "Qatorsatr soni"
+  },
+
+  "AUTH": {
+    "LOGIN": "Kirish",
+    "LOGOUT": "Chiqish",
+    "PHONE": "Telefon raqam",
+    "EMAIL": "Email",
+    "PASSWORD": "Parol",
+    "PHONE_PLACEHOLDER": "90 123 45 67",
+    "EMAIL_PLACEHOLDER": "mebel@example.com",
+    "OTP_CODE": "Tasdiqlash kodi",
+    "OTP_SENT": "Kod yuborildi",
+    "OTP_PLACEHOLDER": "• • • • • •",
+    "SEND_CODE": "Kod yuborish",
+    "RESEND_CODE": "Qayta yuborish",
+    "RESEND_IN": "Qayta yuborish: {{sec}} s",
+    "WELCOME": "Xush kelibsiz!",
+    "ENTER_PHONE": "Davom etish uchun telefon raqamingizni kiriting"
+  },
+
+  "NAV": {
+    "DASHBOARD": "Bosh sahifa",
+    "MASTERS": "Ustalar",
+    "TABLES": "Stollar",
+    "SESSIONS": "Seanslar",
+    "PRODUCTS": "Mahsulotlar",
+    "CASHIER": "Kassa",
+    "REPORTS": "Hisobotlar",
+    "SETTINGS": "Sozlamalar",
+    "USERS": "Foydalanuvchilar",
+    "MASTER": "Usta",
+    "MEBEL_SIZE": "Mebel O'lcham"
+  },
+
+  "TABLE": {
+    "TITLE": "Stollar",
+    "ADD": "Stol qo'shish",
+    "NAME": "Nomi",
+    "STATUS": "Holati",
+    "HOURLY_RATE": "Soatlik narx",
+    "AVAILABLE": "Bo'sh",
+    "BUSY": "Band",
+    "RESERVED": "Bron qilingan",
+    "START_SESSION": "Seans boshlash",
+    "END_SESSION": "Seans tugatish",
+    "DURATION": "Davomiyligi",
+    "AMOUNT": "Summa"
+  },
+
+  "COLUMNS": {
+    "NAME": "Ism",
+    "POSITION": "Ish turi",
+    "EMAIL": "Email",
+    "SALARY": "Maosh"
+  },
+
+  "PRODUCT": {
+    "TITLE": "Mahsulotlar",
+    "ADD": "Mahsulot qo'shish",
+    "NAME": "Nomi",
+    "PRICE": "Narxi",
+    "CATEGORY": "Kategoriya",
+    "QUANTITY": "Miqdor",
+    "UNIT": "O'lchov birligi"
+  },
+
+  "MESSAGES": {
+    "SUCCESS_SAVE": "Muvaffaqiyatli saqlandi",
+    "SUCCESS_DELETE": "Muvaffaqiyatli o'chirildi",
+    "SUCCESS_UPDATE": "Muvaffaqiyatli yangilandi",
+    "CONFIRM_DELETE": "Haqiqatan ham o'chirmoqchimisiz?",
+    "ERROR_GENERIC": "Xatolik yuz berdi",
+    "ERROR_NETWORK": "Tarmoq xatosi. Qayta urinib ko'ring",
+    "NO_DATA": "Ma'lumot topilmadi",
+    "REQUIRED": "Bu maydon to'ldirilishi shart",
+    "MIN_LENGTH": "Kamida {{min}} ta belgi kiriting",
+    "INVALID_PHONE": "Telefon raqam noto'g'ri"
+  },
+
+  "SETTINGS": {
+    "TITLE": "Sozlamalar",
+    "LANGUAGE": "Til",
+    "THEME": "Ko'rinish",
+    "LIGHT": "Kunduzgi",
+    "DARK": "Tungi",
+    "PROFILE": "Profil",
+    "CHANGE_LANG": "Tilni o'zgartirish"
+  }
+}

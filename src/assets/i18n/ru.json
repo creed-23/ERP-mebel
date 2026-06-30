@@ -1,0 +1,116 @@
+{
+  "COMMON": {
+    "SAVE": "Сохранить",
+    "CANCEL": "Отмена",
+    "DELETE": "Удалить",
+    "EDIT": "Редактировать",
+    "ADD": "Добавить",
+    "SEARCH": "Поиск",
+    "LOADING": "Загрузка...",
+    "CONFIRM": "Подтвердить",
+    "YES": "Да",
+    "NO": "Нет",
+    "BACK": "Назад",
+    "CLOSE": "Закрыть",
+    "REFRESH": "Обновить",
+    "EXPORT": "Экспорт",
+    "FILTER": "Фильтр",
+    "CLEAR": "Очистить",
+    "SUBMIT": "Отправить",
+    "RESET": "Сбросить",
+    "ACTIONS": "Действия",
+    "STATUS": "Статус",
+    "CREATED_AT": "Дата создания",
+    "UPDATED_AT": "Дата обновления",
+    "TOTAL": "Итого",
+    "PAGE": "Страница",
+    "OF": "из",
+    "ROWS_PER_PAGE": "Строк на странице"
+  },
+
+  "AUTH": {
+    "LOGIN": "Войти",
+    "LOGOUT": "Выйти",
+    "PHONE": "Номер телефона",
+    "EMAIL": "Электронная почта",
+    "PASSWORD": "Пароль",
+    "PHONE_PLACEHOLDER": "90 123 45 67",
+    "EMAIL_PLACEHOLDER": "mebel@example.com",
+    "OTP_CODE": "Код подтверждения",
+    "OTP_SENT": "Код отправлен",
+    "OTP_PLACEHOLDER": "• • • • • •",
+    "SEND_CODE": "Отправить код",
+    "RESEND_CODE": "Отправить повторно",
+    "RESEND_IN": "Повторная отправка: {{sec}} с",
+    "WELCOME": "Добро пожаловать!",
+    "ENTER_PHONE": "Введите номер телефона для продолжения"
+  },
+
+  "NAV": {
+    "DASHBOARD": "Главная",
+    "MASTERS": "Mастера",
+    "TABLES": "Столы",
+    "SESSIONS": "Сеансы",
+    "PRODUCTS": "Продукты",
+    "CASHIER": "Касса",
+    "REPORTS": "Отчёты",
+    "SETTINGS": "Настройки",
+    "USERS": "Пользователи",
+    "MASTER": "Mастер",
+    "MEBEL_SIZE": "Размер Мебеля"
+  },
+
+  "TABLE": {
+    "TITLE": "Столы",
+    "ADD": "Добавить стол",
+    "NAME": "Название",
+    "STATUS": "Статус",
+    "HOURLY_RATE": "Стоимость в час",
+    "AVAILABLE": "Свободен",
+    "BUSY": "Занят",
+    "RESERVED": "Забронирован",
+    "START_SESSION": "Начать сеанс",
+    "END_SESSION": "Завершить сеанс",
+    "DURATION": "Продолжительность",
+    "AMOUNT": "Сумма"
+  },
+  "COLUMNS": {
+    "NAME": "Имя",
+    "POSITION": "Должность",
+    "EMAIL": "Email",
+    "SALARY": "Зарплата"
+  },
+
+  "PRODUCT": {
+    "TITLE": "Продукты",
+    "ADD": "Добавить продукт",
+    "NAME": "Название",
+    "PRICE": "Цена",
+    "CATEGORY": "Категория",
+    "QUANTITY": "Количество",
+    "UNIT": "Единица измерения"
+  },
+
+  "MESSAGES": {
+    "SUCCESS_SAVE": "Успешно сохранено",
+    "SUCCESS_DELETE": "Успешно удалено",
+    "SUCCESS_UPDATE": "Успешно обновлено",
+    "CONFIRM_DELETE": "Вы действительно хотите удалить?",
+    "ERROR_GENERIC": "Произошла ошибка",
+    "ERROR_NETWORK": "Ошибка сети. Попробуйте снова",
+    "NO_DATA": "Данные не найдены",
+    "REQUIRED": "Это поле обязательно для заполнения",
+    "MIN_LENGTH": "Введите не менее {{min}} символов",
+    "INVALID_PHONE": "Неверный номер телефона"
+  },
+
+  "SETTINGS": {
+    "TITLE": "Настройки",
+    "LANGUAGE": "Язык",
+    "THEME": "Тема",
+    "LIGHT": "Светлая",
+    "DARK": "Тёмная",
+    "PROFILE": "Профиль",
+    "CHANGE_LANG": "Изменить язык"
+  }
+}

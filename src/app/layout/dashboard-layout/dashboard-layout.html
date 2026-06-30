@@ -1,0 +1,17 @@
+@if (sidebarService.mobileOpen()) {
+  <div class="sidebar-backdrop" (click)="sidebarService.close()"></div>
+}
+
+<div class="app-layout" [class.collapsed]="sidebarService.collapsed()">
+  <app-sidebar />
+
+  <div class="content-wrapper">
+    <app-navbar />
+
+    <main class="main-content">
+      <router-outlet />
+    </main>
+
+    <app-footer />
+  </div>
+</div>

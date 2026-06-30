@@ -1,0 +1,166 @@
+<div class="gt-wrapper">
+  <div class="gt-header" *ngIf="title || showAddButton">
+    <h3 class="gt-title" *ngIf="title">{{ title }}</h3>
+
+    <app-button
+      *ngIf="showAddButton"
+      label="Qo'shish"
+      icon="pi-plus"
+      iconPosition="left"
+      variant="ghost"
+      size="sm"
+      [disabled]="isAdding"
+      (buttonClick)="startAdd()"
+    ></app-button>
+  </div>
+
+  <div class="gt-scroll">
+    <table class="gt-table">
+      <thead>
+        <tr>
+          <th class="gt-col-n">N</th>
+          <th
+            *ngFor="let col of columns"
+            [style.width]="col.width || null"
+            [style.textAlign]="col.align || 'left'"
+          >
+            {{ col.label }}
+          </th>
+          <th class="gt-col-actions">Amallar</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- Mavjud qatorlar -->
+        <tr
+          *ngFor="let row of data; let i = index; trackBy: trackByIndex"
+          [class.gt-row--editing]="isEditing(i)"
+        >
+          <td class="gt-col-n">{{ i + 1 }}</td>
+
+          <ng-container *ngFor="let col of columns">
+            <!-- Separator ustun (masalan "X") -->
+            <td
+              *ngIf="col.type === 'separator'"
+              class="gt-cell gt-cell--separator"
+              [style.textAlign]="col.align || 'center'"
+            >
+              {{ col.separatorText || 'X' }}
+            </td>
+
+            <!-- Edit holatidagi input -->
+            <td
+              *ngIf="col.type !== 'separator' && isEditing(i)"
+              class="gt-cell"
+              [style.textAlign]="col.align || 'left'"
+            >
+              <input
+                class="gt-input"
+                [type]="col.type === 'number' ? 'number' : 'text'"
+                [ngModel]="getValue(editingDraft, col)"
+                (ngModelChange)="setDraftValue(editingDraft, col, $event)"
+              />
+            </td>
+
+            <!-- Oddiy ko'rinish -->
+            <td
+              *ngIf="col.type !== 'separator' && !isEditing(i)"
+              class="gt-cell"
+              [style.textAlign]="col.align || 'left'"
+            >
+              {{ getValue(row, col) }}
+            </td>
+          </ng-container>
+
+          <td class="gt-col-actions">
+            <div class="gt-actions-group" *ngIf="!isEditing(i)">
+              <app-button
+                label=""
+                icon="pi-pencil"
+                variant="ghost"
+                size="xs"
+                (buttonClick)="startEdit(i, row)"
+              ></app-button>
+              <app-button
+                label=""
+                icon="pi-trash"
+                variant="ghost"
+                size="xs"
+                (buttonClick)="deleteRow(i)"
+              ></app-button>
+            </div>
+
+            <div class="gt-actions-group" *ngIf="isEditing(i)">
+              <app-button
+                label=""
+                icon="pi-check"
+                variant="ghost"
+                size="xs"
+                (buttonClick)="saveEdit(i)"
+              ></app-button>
+              <app-button
+                label=""
+                icon="pi-times"
+                variant="ghost"
+                size="xs"
+                (buttonClick)="cancelEdit()"
+              ></app-button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Yangi qator qo'shish qatori -->
+        <tr *ngIf="isAdding" class="gt-row--adding">
+          <td class="gt-col-n">{{ data.length + 1 }}</td>
+
+          <ng-container *ngFor="let col of columns">
+            <td
+              *ngIf="col.type === 'separator'"
+              class="gt-cell gt-cell--separator"
+              [style.textAlign]="col.align || 'center'"
+            >
+              {{ col.separatorText || 'X' }}
+            </td>
+
+            <td
+              *ngIf="col.type !== 'separator'"
+              class="gt-cell"
+              [style.textAlign]="col.align || 'left'"
+            >
+              <input
+                class="gt-input"
+                [type]="col.type === 'number' ? 'number' : 'text'"
+                [ngModel]="getValue(addDraft, col)"
+                (ngModelChange)="setDraftValue(addDraft, col, $event)"
+              />
+            </td>
+          </ng-container>
+
+          <td class="gt-col-actions">
+            <div class="gt-actions-group">
+              <app-button
+                label=""
+                icon="pi-check"
+                variant="ghost"
+                size="xs"
+                (buttonClick)="saveAdd()"
+              ></app-button>
+              <app-button
+                label=""
+                icon="pi-times"
+                variant="ghost"
+                size="xs"
+                (buttonClick)="cancelAdd()"
+              ></app-button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Bo'sh holat -->
+        <tr *ngIf="!data.length && !isAdding" class="gt-row--empty">
+          <td [attr.colspan]="columns.length + 2">Ma'lumot yo'q</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

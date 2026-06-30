@@ -1,0 +1,27 @@
+<aside
+  class="sidebar"
+  [class.sidebar--collapsed]="sidebarService.collapsed()"
+  [class.sidebar--open]="sidebarService.mobileOpen()"
+>
+  <div class="sidebar-header">
+    @if (!sidebarService.collapsed()) {
+      <div class="logo">{{ AppName }}</div>
+    }
+
+    <button class="toggle-btn" (click)="toggle()">
+      <i class="pi pi-bars"></i>
+    </button>
+  </div>
+
+  <nav>
+    @for (item of menus; track item.route) {
+      <a [routerLink]="item.route" routerLinkActive="active" (click)="closeMobile()">
+        <i [class]="item.icon"></i>
+
+        @if (!sidebarService.collapsed()) {
+          <span>{{ item.label | translate }}</span>
+        }
+      </a>
+    }
+  </nav>
+</aside>

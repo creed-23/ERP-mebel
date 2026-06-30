@@ -1,0 +1,17 @@
+<button [type]="type" [disabled]="disabled || loading" [ngClass]="classes" (click)="onClick()">
+  @if (loading) {
+    <span class="spinner"></span>
+  } @else {
+    @if (icon && iconPosition === 'left') {
+      <i [class]="'pi ' + icon"></i>
+    }
+
+    @if (label) {
+      <span>{{ label | translate }}</span>
+    }
+
+    @if (icon && iconPosition === 'right') {
+      <i [class]="'pi ' + icon"></i>
+    }
+  }
+</button>

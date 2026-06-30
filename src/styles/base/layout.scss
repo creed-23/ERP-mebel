@@ -1,0 +1,18 @@
+@use '../abstracts/mixins' as *;
+
+:root {
+  --sidebar-width: 280px;
+  --navbar-height: 72px;
+}
+
+@include tablet {
+  :root {
+    --sidebar-width: 80px;
+  }
+}
+
+@include mobile {
+  :root {
+    --sidebar-width: 0px;
+  }
+}

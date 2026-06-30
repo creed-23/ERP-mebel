@@ -1,0 +1,63 @@
+<div
+  class="swiper"
+  [style.aspectRatio]="aspectRatio"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <div
+    class="swiper-viewport"
+    (pointerdown)="onPointerDown($event)"
+    (pointermove)="onPointerMove($event)"
+    (pointerup)="onPointerUp()"
+    (pointercancel)="onPointerUp()"
+  >
+    <div
+      #track
+      class="swiper-track"
+      [class.swiper-track--dragging]="isDragging"
+      [style.transform]="getTrackTransform()"
+    >
+      <div class="swiper-slide" *ngFor="let img of images">
+        <img [src]="img.src" [alt]="img.alt || ''" draggable="false" />
+        <div class="swiper-caption" *ngIf="img.caption">{{ img.caption }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Oldinga / orqaga tugmalar -->
+  <ng-container *ngIf="showArrows && images.length > 1">
+    <button
+      type="button"
+      class="swiper-arrow swiper-arrow--prev"
+      [disabled]="!loop && isFirst()"
+      (click)="prev()"
+      aria-label="Oldingi rasm"
+    >
+      ‹
+    </button>
+    <button
+      type="button"
+      class="swiper-arrow swiper-arrow--next"
+      [disabled]="!loop && isLast()"
+      (click)="next()"
+      aria-label="Keyingi rasm"
+    >
+      ›
+    </button>
+  </ng-container>
+
+  <!-- Nuqtalar -->
+  <div class="swiper-dots" *ngIf="showDots && images.length > 1">
+    <button
+      type="button"
+      *ngFor="let img of images; let i = index"
+      class="swiper-dot"
+      [class.swiper-dot--active]="i === activeIndex"
+      (click)="goTo(i)"
+      [attr.aria-label]="'Rasm ' + (i + 1)"
+    ></button>
+  </div>
+
+  <!-- Hech qanday rasm bo'lmaganda -->
+  <div class="swiper-empty" *ngIf="!images.length">Rasmlar yo'q</div>
+</div>
